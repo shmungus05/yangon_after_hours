@@ -1,0 +1,121 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/location_screen.gd" id="1_location_script"]
+
+[node name="LocationScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_location_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.054902, 0.0705882, 0.109804, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="MainLayout" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer/MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="BackToMapButton" type="Button" parent="MarginContainer/MainLayout/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 18
+text = "← Back to Map"
+
+[node name="TitlesContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="LocationTitleLabel" type="Label" parent="MarginContainer/MainLayout/TopBar/TitlesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.980392, 0.819608, 0.380392, 1)
+theme_override_font_sizes/font_size = 26
+text = "Location Title"
+
+[node name="LocationSubtitleLabel" type="Label" parent="MarginContainer/MainLayout/TopBar/TitlesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.741176, 0.776471, 0.823529, 1)
+theme_override_font_sizes/font_size = 14
+text = "Location Subtitle"
+
+[node name="VisualPlaceholder" type="ColorRect" parent="MarginContainer/MainLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 340)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.121569, 0.160784, 0.239216, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MainLayout/VisualPlaceholder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlaceholderInfo" type="VBoxContainer" parent="MarginContainer/MainLayout/VisualPlaceholder/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="VisualTitleLabel" type="Label" parent="MarginContainer/MainLayout/VisualPlaceholder/CenterContainer/PlaceholderInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.980392, 0.819608, 0.380392, 1)
+theme_override_font_sizes/font_size = 20
+text = "[ Location Scene Viewport ]"
+horizontal_alignment = 1
+
+[node name="NoteLabel" type="Label" parent="MarginContainer/MainLayout/VisualPlaceholder/CenterContainer/PlaceholderInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.678431, 0.737255, 1)
+theme_override_font_sizes/font_size = 14
+text = "Point-and-click pixel art scenery and clickable hotspot clues will go here."
+horizontal_alignment = 1
+
+[node name="DescriptionContainer" type="PanelContainer" parent="MarginContainer/MainLayout"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="MarginContainer/MainLayout/DescriptionContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="LocationDescriptionLabel" type="Label" parent="MarginContainer/MainLayout/DescriptionContainer/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.921569, 0.94902, 1)
+theme_override_font_sizes/font_size = 15
+text = "Description text..."
+autowrap_mode = 3

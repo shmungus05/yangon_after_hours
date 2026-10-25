@@ -1,0 +1,212 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/location_scene.gd" id="1_loc_script"]
+[ext_resource type="Script" path="res://scripts/interactable_hotspot.gd" id="2_hotspot_script"]
+[ext_resource type="Texture2D" path="res://assets/locations/market.jpg" id="3_bg"]
+[ext_resource type="PackedScene" path="res://scenes/components/dialogue_panel.tscn" id="4_dialogue_panel"]
+[ext_resource type="Texture2D" path="res://assets/avatars/cook.png" id="5_avatar"]
+[ext_resource type="PackedScene" path="res://scenes/components/notebook_panel.tscn" id="6_notebook_panel"]
+
+[node name="Market" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_loc_script")
+location_id = "market"
+location_title = "Night Market"
+location_subtitle = "Strand Road Waterfront"
+location_description = "A vibrant labyrinth of stalls beneath striped tarps and string lights along the riverbank. Sizzling charcoal grills, fresh tropical fruits, and bustling vendor shouts echo in the humid night breeze."
+background_texture = ExtResource("3_bg")
+
+[node name="BackgroundRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.25)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 20
+
+[node name="MainLayout" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer/MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BackToMapButton" type="Button" parent="MarginContainer/MainLayout/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 16
+text = "← Back to Map"
+
+[node name="TitlesContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="LocationTitleLabel" type="Label" parent="MarginContainer/MainLayout/TopBar/TitlesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 24
+text = "Night Market"
+
+[node name="LocationSubtitleLabel" type="Label" parent="MarginContainer/MainLayout/TopBar/TitlesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.84, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "Strand Road Waterfront"
+
+[node name="NotebookButton" type="Button" parent="MarginContainer/MainLayout/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 16
+text = "📓 Notebook (0)"
+
+[node name="HotspotArea" type="Control" parent="MarginContainer/MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="VendorHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.25
+anchor_top = 0.62
+anchor_right = 0.25
+anchor_bottom = 0.62
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 125.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 💬 Food Vendor Ko Lin"
+icon = ExtResource("5_avatar")
+expand_icon = true
+script = ExtResource("2_hotspot_script")
+display_name = "Street Food Cook Ko Lin"
+speaker_name = "✦ Ko Lin (Food Vendor)"
+is_character = true
+avatar_texture = ExtResource("5_avatar")
+dialogue_lines = Array[String](["Hot grilled pork skewers and sweet tea! Best midnight snack in Yangon!", "You have the sharp eyes of a detective. Looking for something unusual?", "Someone in a hurry dropped a curious brass coin right near the fruit crates before running down the pier."])
+
+[node name="PierHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.22
+anchor_top = 0.35
+anchor_right = 0.22
+anchor_bottom = 0.35
+offset_left = -95.0
+offset_top = -23.0
+offset_right = 95.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Cargo Boat"
+script = ExtResource("2_hotspot_script")
+display_name = "Moored Cargo Boat"
+speaker_name = "🔍 Inspect: River Cargo Boat"
+dialogue_lines = Array[String](["A weathered wooden riverboat sways against the stone quay under the moonlight.", "Several wooden crates with fresh port stamps are stacked on deck. One crate is slightly ajar, revealing straw packing."])
+clue_id = "market_cargo_crates"
+clue_title = "Wax-Sealed Riverboat Crates"
+clue_description = "Wooden crates stacked on the moored riverboat bearing official port wax seals and smelling of fresh delta teak."
+
+[node name="FruitBasketHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.55
+anchor_top = 0.68
+anchor_right = 0.55
+anchor_bottom = 0.68
+offset_left = -90.0
+offset_top = -23.0
+offset_right = 90.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Fruit Stand"
+script = ExtResource("2_hotspot_script")
+display_name = "Woven Fruit Baskets"
+speaker_name = "🔍 Inspect: Fruit Stand"
+dialogue_lines = Array[String](["Baskets overflowing with fresh pomelos, mangosteens, and bananas under yellow tarps.", "Tucked between two baskets of limes, you spot an antique brass coin bearing an old Burmese royal peacock seal!"])
+clue_id = "market_peacock_coin"
+clue_title = "Antique Peacock Brass Coin"
+clue_description = "An antique brass coin bearing an embossed royal Burmese peacock seal, dropped between lime baskets."
+
+[node name="NarrativePanel" type="PanelContainer" parent="MarginContainer/MainLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+
+[node name="PanelMargin" type="MarginContainer" parent="MarginContainer/MainLayout/NarrativePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
+
+[node name="LocationDescriptionLabel" type="Label" parent="MarginContainer/MainLayout/NarrativePanel/PanelMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.94, 0.97, 1)
+theme_override_font_sizes/font_size = 15
+text = "A vibrant labyrinth of stalls beneath striped tarps and string lights along the riverbank. Sizzling charcoal grills, fresh tropical fruits, and bustling vendor shouts echo in the humid night breeze."
+autowrap_mode = 3
+
+[node name="DialoguePanel" parent="." instance=ExtResource("4_dialogue_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="NotebookPanel" parent="." instance=ExtResource("6_notebook_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

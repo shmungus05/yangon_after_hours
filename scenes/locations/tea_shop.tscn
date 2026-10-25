@@ -1,0 +1,321 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/location_scene.gd" id="1_loc_script"]
+[ext_resource type="Script" path="res://scripts/interactable_hotspot.gd" id="2_hotspot_script"]
+[ext_resource type="Texture2D" path="res://assets/locations/tea_shop.jpg" id="3_bg"]
+[ext_resource type="PackedScene" path="res://scenes/components/dialogue_panel.tscn" id="4_dialogue_panel"]
+[ext_resource type="Texture2D" path="res://assets/avatars/tea_master.png" id="5_avatar"]
+[ext_resource type="PackedScene" path="res://scenes/components/notebook_panel.tscn" id="6_notebook_panel"]
+[ext_resource type="PackedScene" path="res://scenes/components/tea_puzzle_panel.tscn" id="7_puzzle_panel"]
+[ext_resource type="Texture2D" path="res://assets/avatars/ma_thida.png" id="8_thida_avatar"]
+[ext_resource type="Texture2D" path="res://assets/avatars/saya_min.png" id="9_min_avatar"]
+[ext_resource type="Texture2D" path="res://assets/avatars/ko_aung.png" id="10_aung_avatar"]
+
+[node name="TeaShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_loc_script")
+location_id = "tea_shop"
+location_title = "Lucky Tea Shop"
+location_subtitle = "Corner of 38th Street"
+location_description = "Low plastic stools line the sidewalk under warm incandescent bulbs. The sweet aroma of steamed black tea, condensed milk, and fresh samosas fills the humid night air as patrons discuss the evening news."
+background_texture = ExtResource("3_bg")
+
+[node name="BackgroundRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.05, 0.08, 0.25)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 20
+
+[node name="MainLayout" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer/MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BackToMapButton" type="Button" parent="MarginContainer/MainLayout/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 16
+text = "← Back to Map"
+
+[node name="TitlesContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="LocationTitleLabel" type="Label" parent="MarginContainer/MainLayout/TopBar/TitlesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 24
+text = "Lucky Tea Shop"
+
+[node name="LocationSubtitleLabel" type="Label" parent="MarginContainer/MainLayout/TopBar/TitlesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.84, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "Corner of 38th Street"
+
+[node name="NotebookButton" type="Button" parent="MarginContainer/MainLayout/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 16
+text = "📓 Notebook (0)"
+
+[node name="HotspotArea" type="Control" parent="MarginContainer/MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="TeaMasterHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.52
+anchor_top = 0.36
+anchor_right = 0.52
+anchor_bottom = 0.36
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 125.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 💬 Tea Master Ko Zaw"
+icon = ExtResource("5_avatar")
+expand_icon = true
+script = ExtResource("2_hotspot_script")
+display_name = "Tea Master Ko Zaw"
+speaker_name = "✦ Tea Master Ko Zaw"
+is_character = true
+avatar_texture = ExtResource("5_avatar")
+dialogue_lines = Array[String](["Mingalarbar! Welcome to Lucky Tea Shop. Freshly brewed sweet tea is ready on the stove.", "The tea shop got crowded earlier and I mixed up the three tea cups on Table Three! Can you help me serve them?", "Ask Saya Min, Ma Thida, and Ko Aung about their preferences, then use the Tea Orders Tray on the counter to serve them!"])
+
+[node name="TeaOrdersHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.52
+anchor_top = 0.49
+anchor_right = 0.52
+anchor_bottom = 0.49
+offset_left = -120.0
+offset_top = -25.0
+offset_right = 120.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "☕ Solve Tea Orders (Table 3)"
+script = ExtResource("2_hotspot_script")
+display_name = "Solve Tea Orders (Table 3)"
+speaker_name = "☕ Tea Orders Tray"
+
+[node name="MaThidaHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.14
+anchor_top = 0.62
+anchor_right = 0.14
+anchor_bottom = 0.62
+offset_left = -105.0
+offset_top = -26.0
+offset_right = 105.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = " 💬 Ma Thida"
+icon = ExtResource("8_thida_avatar")
+expand_icon = true
+script = ExtResource("2_hotspot_script")
+display_name = "Ma Thida (Trader)"
+speaker_name = "✦ Ma Thida (The Trader)"
+is_character = true
+avatar_texture = ExtResource("8_thida_avatar")
+dialogue_lines = Array[String](["Phew! What an exhausting day haggling over spice sacks down at Strand Road.", "My throat is parched, and I have a huge sweet tooth tonight! Give me the classic balanced sweetness.", "Generous condensed milk and rich evaporated milk—a steaming cup of Cho-seint (Sweet & Rich) is perfection!"])
+
+[node name="SayaMinHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.33
+anchor_top = 0.62
+anchor_right = 0.33
+anchor_bottom = 0.62
+offset_left = -105.0
+offset_top = -26.0
+offset_right = 105.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = " 💬 Saya Min"
+icon = ExtResource("9_min_avatar")
+expand_icon = true
+script = ExtResource("2_hotspot_script")
+display_name = "Saya Min (Teacher)"
+speaker_name = "✦ Saya Min (The Teacher)"
+is_character = true
+avatar_texture = ExtResource("9_min_avatar")
+dialogue_lines = Array[String](["Mingalarbar! Ah, my eyes are heavy from grading examination papers all evening.", "In a Yangon tea shop, you must know your brew! I need something bold and extra strong to fuel my mind through the midnight hours.", "A heavy dose of dark Assam tea leaves with a sweet kick—Cho-pyit (Sweet & Strong) is the only drink that will keep me awake!"])
+
+[node name="KoAungHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 52)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.84
+anchor_top = 0.64
+anchor_right = 0.84
+anchor_bottom = 0.64
+offset_left = -105.0
+offset_top = -26.0
+offset_right = 105.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = " 💬 Ko Aung"
+icon = ExtResource("10_aung_avatar")
+expand_icon = true
+script = ExtResource("2_hotspot_script")
+display_name = "Ko Aung (Taxi Driver)"
+speaker_name = "✦ Ko Aung (The Driver)"
+is_character = true
+avatar_texture = ExtResource("10_aung_avatar")
+dialogue_lines = Array[String](["Rainy night taxi shifts are tough work. Navigating colonial potholes around Sule Pagoda takes sharp focus.", "My doctor told me to cut way back on the sugar, but I can't resist the rich evaporated milk froth.", "Keep the sugar low but make it extra creamy—a proper cup of Pawt-seint (Mild & Creamy) will keep me driving smooth!"])
+
+[node name="KettleHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.67
+anchor_top = 0.62
+anchor_right = 0.67
+anchor_bottom = 0.62
+offset_left = -100.0
+offset_top = -23.0
+offset_right = 100.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Steaming Kettle"
+script = ExtResource("2_hotspot_script")
+display_name = "Steaming Brass Kettle"
+speaker_name = "🔍 Inspect: Brass Kettle"
+dialogue_lines = Array[String](["A heavy brass kettle hisses gently over a small gas flame, releasing the rich fragrance of boiling Assam tea leaves.", "Behind the kettle, you spot a folded newspaper with an article circled in red ink: 'Mysterious Night Cargo Unloaded at Yangon Port'."])
+clue_id = "tea_port_newspaper"
+clue_title = "Circled Port Cargo Article"
+clue_description = "A yesterday newspaper article tucked behind the tea kettle with a red ink circle around 'Mysterious Night Cargo Unloaded at Yangon Port'."
+
+[node name="TableHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.22
+anchor_top = 0.74
+anchor_right = 0.22
+anchor_bottom = 0.74
+offset_left = -90.0
+offset_top = -23.0
+offset_right = 90.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Corner Table"
+script = ExtResource("2_hotspot_script")
+display_name = "Corner Tea Table"
+speaker_name = "🔍 Inspect: Corner Table"
+dialogue_lines = Array[String](["Two small glasses of milk tea sit half-finished next to a basket of crispy samosas.", "Underneath a wet napkin on the table, someone hastily scratched a message: 'Check Sule Pagoda notice board before 1 AM'."])
+clue_id = "tea_scratched_cipher"
+clue_title = "Hastily Scratched Napkin Note"
+clue_description = "Underneath a wet napkin on 38th Street, someone scratched: 'Check Sule Pagoda notice board before 1 AM.'"
+
+[node name="NarrativePanel" type="PanelContainer" parent="MarginContainer/MainLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+
+[node name="PanelMargin" type="MarginContainer" parent="MarginContainer/MainLayout/NarrativePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
+
+[node name="LocationDescriptionLabel" type="Label" parent="MarginContainer/MainLayout/NarrativePanel/PanelMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.94, 0.97, 1)
+theme_override_font_sizes/font_size = 15
+text = "Low plastic stools line the sidewalk under warm incandescent bulbs. The sweet aroma of steamed black tea, condensed milk, and fresh samosas fills the humid night air as patrons discuss the evening news."
+autowrap_mode = 3
+
+[node name="DialoguePanel" parent="." instance=ExtResource("4_dialogue_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="NotebookPanel" parent="." instance=ExtResource("6_notebook_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="TeaPuzzlePanel" parent="." instance=ExtResource("7_puzzle_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

@@ -1,0 +1,212 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/location_scene.gd" id="1_loc_script"]
+[ext_resource type="Script" path="res://scripts/interactable_hotspot.gd" id="2_hotspot_script"]
+[ext_resource type="Texture2D" path="res://assets/locations/downtown.jpg" id="3_bg"]
+[ext_resource type="PackedScene" path="res://scenes/components/dialogue_panel.tscn" id="4_dialogue_panel"]
+[ext_resource type="Texture2D" path="res://assets/avatars/watchman.png" id="5_avatar"]
+[ext_resource type="PackedScene" path="res://scenes/components/notebook_panel.tscn" id="6_notebook_panel"]
+
+[node name="Downtown" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_loc_script")
+location_id = "downtown"
+location_title = "Downtown (Sule)"
+location_subtitle = "Colonial Heritage & Neon Alleyways"
+location_description = "Rain-slicked cobblestones reflect golden pagoda spires and glowing vintage shop signs. Cool night breezes rustle through the colonial balconies as late-night taxis hum past Sule Pagoda."
+background_texture = ExtResource("3_bg")
+
+[node name="BackgroundRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Vignette" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.06, 0.1, 0.3)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 20
+
+[node name="MainLayout" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer/MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BackToMapButton" type="Button" parent="MarginContainer/MainLayout/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 16
+text = "← Back to Map"
+
+[node name="TitlesContainer" type="VBoxContainer" parent="MarginContainer/MainLayout/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="LocationTitleLabel" type="Label" parent="MarginContainer/MainLayout/TopBar/TitlesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 24
+text = "Downtown (Sule)"
+
+[node name="LocationSubtitleLabel" type="Label" parent="MarginContainer/MainLayout/TopBar/TitlesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.84, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "Colonial Heritage & Neon Alleyways"
+
+[node name="NotebookButton" type="Button" parent="MarginContainer/MainLayout/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 46)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 16
+text = "📓 Notebook (0)"
+
+[node name="HotspotArea" type="Control" parent="MarginContainer/MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="WatchmanHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.32
+anchor_top = 0.58
+anchor_right = 0.32
+anchor_bottom = 0.58
+offset_left = -125.0
+offset_top = -30.0
+offset_right = 125.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 💬 Night Watchman U Ba"
+icon = ExtResource("5_avatar")
+expand_icon = true
+script = ExtResource("2_hotspot_script")
+display_name = "Night Watchman U Ba"
+speaker_name = "✦ Night Watchman U Ba"
+is_character = true
+avatar_texture = ExtResource("5_avatar")
+dialogue_lines = Array[String](["Hold on there, friend! Walking downtown in the rain so late?", "I keep watch over these old colonial banks and heritage halls. Nothing escapes my eyes.", "Though if you're looking for that hurried fellow with the briefcase, he darted toward the tea shops on 38th Street!"])
+
+[node name="NoticeBoardHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.16
+anchor_top = 0.42
+anchor_right = 0.16
+anchor_bottom = 0.42
+offset_left = -95.0
+offset_top = -23.0
+offset_right = 95.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Notice Board"
+script = ExtResource("2_hotspot_script")
+display_name = "Notice Board"
+speaker_name = "🔍 Inspect: Colonial Notice Board"
+dialogue_lines = Array[String](["A weathered teak bulletin board affixed to the entrance of a heritage building.", "A freshly pinned scrap of paper catches your eye: 'Midnight rendezvous confirmed at Strand Road cargo pier.'"])
+clue_id = "downtown_pier_note"
+clue_title = "Midnight Pier Rendezvous Note"
+clue_description = "A handwritten scrap of paper pinned to the colonial bulletin board: 'Midnight rendezvous confirmed at Strand Road cargo pier.'"
+
+[node name="StreetlampHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.78
+anchor_top = 0.52
+anchor_right = 0.78
+anchor_bottom = 0.52
+offset_left = -90.0
+offset_top = -23.0
+offset_right = 90.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Streetlamp"
+script = ExtResource("2_hotspot_script")
+display_name = "Amber Streetlamp"
+speaker_name = "🔍 Inspect: Streetlamp & Puddle"
+dialogue_lines = Array[String](["An ornate cast-iron streetlamp casts a warm pool of golden light onto wet cobblestones.", "In the ripple of the puddle, you spot bicycle tire tracks heading south toward the river docks."])
+clue_id = "downtown_tire_tracks"
+clue_title = "Waterfront Tire Tracks"
+clue_description = "Fresh bicycle tire tracks visible under the streetlamp puddle leading south toward the river docks."
+
+[node name="NarrativePanel" type="PanelContainer" parent="MarginContainer/MainLayout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+
+[node name="PanelMargin" type="MarginContainer" parent="MarginContainer/MainLayout/NarrativePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
+
+[node name="LocationDescriptionLabel" type="Label" parent="MarginContainer/MainLayout/NarrativePanel/PanelMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.94, 0.97, 1)
+theme_override_font_sizes/font_size = 15
+text = "Rain-slicked cobblestones reflect golden pagoda spires and glowing vintage shop signs. Cool night breezes rustle through the colonial balconies as late-night taxis hum past Sule Pagoda."
+autowrap_mode = 3
+
+[node name="DialoguePanel" parent="." instance=ExtResource("4_dialogue_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="NotebookPanel" parent="." instance=ExtResource("6_notebook_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

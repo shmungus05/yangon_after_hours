@@ -1,0 +1,303 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/tea_puzzle_panel.gd" id="1_puzzle_script"]
+[ext_resource type="Texture2D" path="res://assets/avatars/saya_min.png" id="2_min_avatar"]
+[ext_resource type="Texture2D" path="res://assets/avatars/ma_thida.png" id="3_thida_avatar"]
+[ext_resource type="Texture2D" path="res://assets/avatars/ko_aung.png" id="4_aung_avatar"]
+
+[node name="TeaPuzzlePanel" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_puzzle_script")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0313726, 0.0588235, 0.75)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PuzzleCard" type="PanelContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(840, 580)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PuzzleCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titles" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header/Titles"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 22
+text = "☕ TEA SHOP ORDER PUZZLE"
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header/Titles"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.490196, 0.784314, 0.980392, 1)
+theme_override_font_sizes/font_size = 13
+text = "Match each customer at Table 3 to their requested Burmese tea brew"
+
+[node name="StatusBadge" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 14
+text = "STATUS: UNSOLVED"
+
+[node name="TopCloseButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 36)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 14
+text = "✕ Close"
+
+[node name="CustomersContainer" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="MinCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AvatarFrame" type="CenterContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox/AvatarFrame"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = ExtResource("2_min_avatar")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "Saya Min (Teacher)"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"Grading papers all night. Needs a bold, dark brew with an extra strong caffeine kick to stay awake.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PromptLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Serve this Tea:"
+
+[node name="MinOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="ThidaCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AvatarFrame" type="CenterContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox/AvatarFrame"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = ExtResource("3_thida_avatar")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "Ma Thida (Trader)"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"Parched throat from trading. Craves classic rich sweetness and generous creamy condensed milk.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PromptLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Serve this Tea:"
+
+[node name="ThidaOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="AungCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="AvatarFrame" type="CenterContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+
+[node name="Avatar" type="TextureRect" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox/AvatarFrame"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = ExtResource("4_aung_avatar")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "Ko Aung (Taxi Driver)"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"Night shift driver. Strictly low sugar to avoid the jitters, but wants extra rich evaporated milk.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PromptLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Serve this Tea:"
+
+[node name="AungOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="FeedbackContainer" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/FeedbackContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="FeedbackLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/FeedbackContainer/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 13
+text = "Examine customer dialogues for clues on sweetness and strength, select their requested tea brews, and press Serve Orders."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Footer" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="ServeButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 46)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Serve Orders ☕"
+
+[node name="CloseButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 46)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "Close ✕"
