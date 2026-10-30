@@ -15,6 +15,7 @@ func _run_tests() -> void:
 		root.add_child(game_state)
 		await process_frame
 	
+	game_state.set_language("en")
 	game_state.clear_clues()
 	game_state.clear_puzzles()
 	assert(game_state.is_puzzle_solved("tea_order_puzzle") == false, "Puzzle should start unsolved")
@@ -123,5 +124,6 @@ func _run_tests() -> void:
 	await process_frame
 	print("✔ Test 6: Puzzle persistence and reactive NPC dialogue verified.")
 	
+	game_state.set_language("my")
 	print("--- ALL TEA SHOP PUZZLE TESTS PASSED ---")
 	quit(0)

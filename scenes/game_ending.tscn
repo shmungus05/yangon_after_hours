@@ -1,0 +1,169 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/game_ending.gd" id="1_ending_script"]
+[ext_resource type="Texture2D" path="res://assets/locations/downtown.jpg" id="2_bg"]
+
+[node name="GameEnding" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ending_script")
+
+[node name="BackgroundRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="DarkOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.05, 0.09, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndingCard" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(820, 580)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/EndingCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 26
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/EndingCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HeaderContainer" type="VBoxContainer" parent="CenterContainer/EndingCard/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="PreTitle" type="Label" parent="CenterContainer/EndingCard/Margin/VBox/HeaderContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 14
+text = "★ INVESTIGATION CONCLUDED ★"
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/EndingCard/Margin/VBox/HeaderContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 28
+text = "YANGON AFTER HOURS — CASE CLOSED"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/EndingCard/Margin/VBox/HeaderContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.490196, 0.784314, 0.980392, 1)
+theme_override_font_sizes/font_size = 14
+text = "The Midnight Mystery of Strand Road has been Solved"
+horizontal_alignment = 1
+
+[node name="Divider1" type="ColorRect" parent="CenterContainer/EndingCard/Margin/VBox"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.2, 0.3, 0.45, 0.6)
+
+[node name="NarrativeLabel" type="Label" parent="CenterContainer/EndingCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.9, 0.93, 0.97, 1)
+theme_override_font_sizes/font_size = 14
+text = "Through the rain-washed streets of downtown Sule, the sweet tea aromas of 38th Street, and the vibrant riverfront stalls of Strand Road, you tracked down every missing thread.
+
+• You untangled the crowded tea orders for Saya Min, Ma Thida, and Ko Aung, obtaining the harbor cargo slip.
+• You cracked the combination lock on Ko Lin's iron spice chest at the Night Market, safely recovering his missing grandfather's recipe and delivery ledger.
+• Synthesizing the Royal Hintha Seal and Secret Passcode 1886, you verified the midnight delivery with Night Watchman U Ba and secured the stolen colonial brass relics inside the Downtown Heritage Vault.
+
+As the first golden rays of dawn rise over Sule Pagoda, the steam from the tea shop kettles drifts into the cool morning breeze. The historic treasures of Yangon are safe once more."
+autowrap_mode = 3
+
+[node name="StatsPanel" type="PanelContainer" parent="CenterContainer/EndingCard/Margin/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="StatsMargin" type="MarginContainer" parent="CenterContainer/EndingCard/Margin/VBox/StatsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 10
+
+[node name="StatsHBox" type="HBoxContainer" parent="CenterContainer/EndingCard/Margin/VBox/StatsPanel/StatsMargin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="ClueStatLabel" type="Label" parent="CenterContainer/EndingCard/Margin/VBox/StatsPanel/StatsMargin/StatsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 14
+text = "📓 Clues Collected: 7 / 7"
+
+[node name="PuzzleStatLabel" type="Label" parent="CenterContainer/EndingCard/Margin/VBox/StatsPanel/StatsMargin/StatsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "🧩 Puzzles Solved: 3 / 3"
+
+[node name="LocationStatLabel" type="Label" parent="CenterContainer/EndingCard/Margin/VBox/StatsPanel/StatsMargin/StatsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.490196, 0.784314, 0.980392, 1)
+theme_override_font_sizes/font_size = 14
+text = "🏙️ Locations Explored: 3 / 3"
+
+[node name="ActionButtons" type="HBoxContainer" parent="CenterContainer/EndingCard/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EndingLangButton" type="Button" parent="CenterContainer/EndingCard/Margin/VBox/ActionButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 15
+text = "မြန်မာ"
+
+[node name="RestartButton" type="Button" parent="CenterContainer/EndingCard/Margin/VBox/ActionButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "↺ Play Again (New Game)"
+
+[node name="FreeRoamButton" type="Button" parent="CenterContainer/EndingCard/Margin/VBox/ActionButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "🗺️ Return to City Map"

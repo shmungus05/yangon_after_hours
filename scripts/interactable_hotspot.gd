@@ -52,3 +52,6 @@ func _setup_visuals() -> void:
 
 func _on_pressed() -> void:
 	interacted.emit(self)
+
+func interact() -> void:
+	_on_pressed()

@@ -16,6 +16,7 @@ func _run_tests() -> void:
 		root.add_child(game_state)
 		await process_frame
 	
+	game_state.set_language("en")
 	game_state.clear_clues()
 	assert(game_state.get_clue_count() == 0, "Initial clue count should be 0")
 	
@@ -147,5 +148,6 @@ func _run_tests() -> void:
 	await process_frame
 	print("✔ Test 4: Cross-location clue persistence and multi-click in Tea Shop passed.")
 	
+	game_state.set_language("my")
 	print("--- ALL CLUE SYSTEM & NOTEBOOK TESTS PASSED ---")
 	quit(0)

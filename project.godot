@@ -37,3 +37,7 @@ pointing/emulate_touch_from_mouse=true
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[gui]
+
+theme/custom_font="res://assets/fonts/Pyidaungsu.ttf"

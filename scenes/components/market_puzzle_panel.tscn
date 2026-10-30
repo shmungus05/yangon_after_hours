@@ -1,0 +1,295 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/market_puzzle_panel.gd" id="1_market_script"]
+
+[node name="MarketPuzzlePanel" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_market_script")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0313726, 0.0588235, 0.75)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PuzzleCard" type="PanelContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(840, 560)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PuzzleCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titles" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header/Titles"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 22
+text = "📦 VENDOR'S MISSING NOTEBOOK PUZZLE"
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header/Titles"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.490196, 0.784314, 0.980392, 1)
+theme_override_font_sizes/font_size = 13
+text = "Align the three tumbler combination dials to unlock Ko Lin's iron spice chest"
+
+[node name="StatusBadge" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 14
+text = "STATUS: LOCKED 🔒"
+
+[node name="TopCloseButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 36)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 14
+text = "✕ Close"
+
+[node name="DialsContainer" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="EmblemCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/EmblemCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/EmblemCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Icon" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/EmblemCard/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "🦚"
+horizontal_alignment = 1
+
+[node name="EmblemName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/EmblemCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "Dial 1: Market Emblem"
+horizontal_alignment = 1
+
+[node name="EmblemHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/EmblemCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"The royal emblem stamped on the antique brass coin discovered between lime baskets at the fruit stand.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/EmblemCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EmblemPrompt" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/EmblemCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Set Emblem Dial:"
+
+[node name="EmblemOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/EmblemCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="StashCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/StashCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/StashCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Icon" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/StashCard/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "🚢"
+horizontal_alignment = 1
+
+[node name="StashName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/StashCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "Dial 2: Storage Bay"
+horizontal_alignment = 1
+
+[node name="StashHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/StashCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"The riverfront cargo staging area matching the port seals and the moored wooden riverboat crates.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/StashCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StashPrompt" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/StashCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Set Location Dial:"
+
+[node name="StashOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/StashCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="SpiceCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/SpiceCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/SpiceCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Icon" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/SpiceCard/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "🌶️"
+horizontal_alignment = 1
+
+[node name="SpiceName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/SpiceCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "Dial 3: Secret Seasoning"
+horizontal_alignment = 1
+
+[node name="SpiceHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/SpiceCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"Ko Lin's secret spice mixture that makes his midnight pork skewers famous across the entire Strand Road market.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/SpiceCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SpicePrompt" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/SpiceCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Set Seasoning Dial:"
+
+[node name="SpiceOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/DialsContainer/SpiceCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="FeedbackContainer" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/FeedbackContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="FeedbackLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/FeedbackContainer/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 13
+text = "Inspect the market stalls, fruit baskets, and riverboat crates to deduce the three tumbler dials."
+autowrap_mode = 3
+
+[node name="ActionButtons" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="CloseButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/ActionButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Cancel"
+
+[node name="UnlockButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/ActionButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "Unlock Spice Chest 🔓"

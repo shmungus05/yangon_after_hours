@@ -1,6 +1,8 @@
 class_name NotebookPanel
 extends Control
 
+const Localization = preload("res://scripts/localization.gd")
+
 ## Reusable investigator's notebook panel for Yangon After Hours.
 ## Displays all discovered clues and evidence, persisting across locations.
 
@@ -8,6 +10,8 @@ signal notebook_opened
 signal notebook_closed
 
 @onready var backdrop: Control = %Backdrop
+@onready var title_label: Label = %TitleLabel
+@onready var subtitle_label: Label = %SubtitleLabel
 @onready var top_close_button: Button = %TopCloseButton
 @onready var close_button: Button = %CloseButton
 @onready var clues_list: VBoxContainer = %CluesList
@@ -40,7 +44,22 @@ func close_notebook() -> void:
 	notebook_closed.emit()
 
 func refresh_clues() -> void:
+	var lang: String = "my"
 	var game_state = get_node_or_null("/root/GameState")
+	if game_state:
+		lang = game_state.get_language()
+	
+	if title_label:
+		title_label.text = Localization.get_ui_text("NOTEBOOK_TITLE", lang)
+	if subtitle_label:
+		subtitle_label.text = Localization.get_ui_text("NOTEBOOK_SUBTITLE", lang)
+	if empty_state_label:
+		empty_state_label.text = Localization.get_ui_text("NOTEBOOK_EMPTY", lang)
+	if top_close_button:
+		top_close_button.text = Localization.get_ui_text("NOTEBOOK_CLOSE", lang)
+	if close_button:
+		close_button.text = Localization.get_ui_text("NOTEBOOK_CLOSE", lang)
+	
 	var clues: Array[Dictionary] = game_state.get_clues() if game_state else []
 	
 	# Clear previous clue cards (except empty state label)
@@ -48,12 +67,13 @@ func refresh_clues() -> void:
 		if child != empty_state_label:
 			child.queue_free()
 	
+	var count_fmt: String = Localization.get_ui_text("NOTEBOOK_COUNT", lang)
 	if clues.is_empty():
 		empty_state_label.visible = true
-		clue_count_label.text = "Recorded Clues: 0"
+		clue_count_label.text = count_fmt % 0
 	else:
 		empty_state_label.visible = false
-		clue_count_label.text = "Recorded Clues: %d" % clues.size()
+		clue_count_label.text = count_fmt % clues.size()
 		
 		for clue in clues:
 			var card: PanelContainer = _create_clue_card(clue)

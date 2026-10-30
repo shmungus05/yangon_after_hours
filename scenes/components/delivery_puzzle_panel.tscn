@@ -1,0 +1,304 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/delivery_puzzle_panel.gd" id="1_delivery_script"]
+
+[node name="DeliveryPuzzlePanel" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_delivery_script")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0313726, 0.0588235, 0.75)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PuzzleCard" type="PanelContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(850, 560)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PuzzleCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titles" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header/Titles"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 22
+text = "🏛️ HERITAGE VAULT DISPATCH CONSOLE"
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header/Titles"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.490196, 0.784314, 0.980392, 1)
+theme_override_font_sizes/font_size = 13
+text = "Synthesize your investigation evidence to verify and complete the final midnight delivery"
+
+[node name="StatusBadge" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 14
+text = "STATUS: PENDING 🔒"
+
+[node name="TopCloseButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 36)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 14
+text = "✕ Close"
+
+[node name="VerificationContainer" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="SealCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/SealCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/SealCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Icon" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/SealCard/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "📜"
+horizontal_alignment = 1
+
+[node name="SealName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/SealCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "1. Cargo Manifest Seal"
+horizontal_alignment = 1
+
+[node name="SealHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/SealCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"The royal seal stamped on the harbor cargo manifest recovered after solving the tea shop orders.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/SealCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SealPrompt" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/SealCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Select Cargo Seal:"
+
+[node name="SealOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/SealCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="PasscodeCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/PasscodeCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/PasscodeCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Icon" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/PasscodeCard/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "🔢"
+horizontal_alignment = 1
+
+[node name="PasscodeName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/PasscodeCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "2. Dispatch Passcode"
+horizontal_alignment = 1
+
+[node name="PasscodeHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/PasscodeCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"The secret four-digit vault passcode written in vendor Ko Lin's recovered market ledger.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/PasscodeCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PasscodePrompt" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/PasscodeCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Select Dispatch Code:"
+
+[node name="PasscodeOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/PasscodeCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="RecipientCard" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/RecipientCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/RecipientCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Icon" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/RecipientCard/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "🏛️"
+horizontal_alignment = 1
+
+[node name="RecipientName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/RecipientCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "3. Authorized Sentry"
+horizontal_alignment = 1
+
+[node name="RecipientHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/RecipientCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "\"The trusted colonial night watchman assigned to guard the heritage repository at Sule Pagoda.\""
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/RecipientCard/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RecipientPrompt" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/RecipientCard/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 12
+text = "Select Recipient:"
+
+[node name="RecipientOption" type="OptionButton" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/VerificationContainer/RecipientCard/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+
+[node name="FeedbackContainer" type="PanelContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 68)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/FeedbackContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="FeedbackLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/FeedbackContainer/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 13
+text = "Consult your Investigator's Notebook: synthesize the Harbor Cargo Manifest Seal, the Vendor's Passcode, and the Authorized Sentry."
+autowrap_mode = 3
+
+[node name="ActionButtons" type="HBoxContainer" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="CloseButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/ActionButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Cancel"
+
+[node name="DeliverButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/ActionButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "Verify & Complete Delivery 📦"
+
+[node name="EndingButton" type="Button" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/ActionButtons"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(250, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "View Mystery Resolution 🏆"

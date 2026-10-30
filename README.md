@@ -47,12 +47,12 @@ yangon-after-hours/
 │       ├── tea_shop.tscn    # Lucky Tea Shop scene & puzzle trigger
 │       └── market.tscn      # Strand Road Night Market scene
 └── scripts/
-    ├── game_state.gd        # Autoload singleton (clues, puzzles, navigation)
-    ├── interactable_hotspot.gd # Hotspot button component
-    ├── dialogue_panel.gd    # Dialogue controller
-    ├── notebook_panel.gd    # Notebook UI controller
-    ├── tea_puzzle_panel.gd  # Tea puzzle controller
-    └── test_*.gd            # Headless automated test suites
+	├── game_state.gd        # Autoload singleton (clues, puzzles, navigation)
+	├── interactable_hotspot.gd # Hotspot button component
+	├── dialogue_panel.gd    # Dialogue controller
+	├── notebook_panel.gd    # Notebook UI controller
+	├── tea_puzzle_panel.gd  # Tea puzzle controller
+	└── test_*.gd            # Headless automated test suites
 ```
 
 ---

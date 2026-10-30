@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0784314, 0.0980392, 0.156863, 1)
+color = Color(0.06, 0.08, 0.13, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -29,46 +29,93 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(360, 0)
+custom_minimum_size = Vector2(460, 0)
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 14
 alignment = 1
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.980392, 0.819608, 0.380392, 1)
-theme_override_font_sizes/font_size = 38
-text = "YANGON AFTER HOURS"
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 36
+text = "ရန်ကုန်ညဉ့်နက်ချိန်"
 horizontal_alignment = 1
 
 [node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.741176, 0.776471, 0.823529, 1)
-theme_override_font_sizes/font_size = 18
-text = "A Point & Click Mystery"
+theme_override_colors/font_color = Color(0.74, 0.82, 0.92, 1)
+theme_override_font_sizes/font_size = 16
+text = "မြန်မာပြည်၏ ညဉ့်နက်နက် လျှို့ဝှက်ဆန်းကြယ် စုံထောက်စွန့်စားခန်း"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(240, 52)
+custom_minimum_size = Vector2(280, 52)
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "Play"
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 20
+text = "▶ စတင်ကစားမည်"
+
+[node name="LanguageButton" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.490196, 0.784314, 0.980392, 1)
+theme_override_font_sizes/font_size = 16
+text = "🌐 ဘာသာစကား - မြန်မာစာ (Language: Myanmar)"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(240, 44)
+custom_minimum_size = Vector2(280, 44)
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "Quit"
+theme_override_font_sizes/font_size = 16
+text = "ထွက်မည်"
+
+[node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="InstructionsPanel" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/VBoxContainer/InstructionsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/InstructionsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="InstrTitleLabel" type="Label" parent="CenterContainer/VBoxContainer/InstructionsPanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 13
+text = "ကစားနည်း လမ်းညွှန်"
+horizontal_alignment = 1
+
+[node name="InstrDescLabel" type="Label" parent="CenterContainer/VBoxContainer/InstructionsPanel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
+theme_override_font_sizes/font_size = 12
+text = "စူးစမ်းလေ့လာရန်၊ ဇာတ်ကောင်များနှင့် စကားပြောရန်နှင့် ပဟေဠိများ ဖြေရှင်းရန် အရာဝတ္ထုများကို နှိပ်ပါ။"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="FooterLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.45098, 0.490196, 0.54902, 1)
-theme_override_font_sizes/font_size = 14
-text = "Touch & Mouse Compatible"
+theme_override_colors/font_color = Color(0.48, 0.54, 0.62, 1)
+theme_override_font_sizes/font_size = 13
+text = "မောက်စ်နှင့် ထိတွေ့မျက်နှာပြင် နှစ်မျိုးစလုံး ကစားနိုင်ပါသည်"
 horizontal_alignment = 1

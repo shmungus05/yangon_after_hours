@@ -59,12 +59,14 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header/Titles"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
 theme_override_font_sizes/font_size = 22
 text = "☕ TEA SHOP ORDER PUZZLE"
 
 [node name="SubtitleLabel" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/Header/Titles"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.490196, 0.784314, 0.980392, 1)
 theme_override_font_sizes/font_size = 13
@@ -117,15 +119,16 @@ texture = ExtResource("2_min_avatar")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Name" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+[node name="MinName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
 theme_override_font_sizes/font_size = 15
 text = "Saya Min (Teacher)"
 horizontal_alignment = 1
 
-[node name="Hint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
-custom_minimum_size = Vector2(0, 70)
+[node name="MinHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/MinCard/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
 theme_override_font_sizes/font_size = 12
@@ -174,15 +177,16 @@ texture = ExtResource("3_thida_avatar")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Name" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+[node name="ThidaName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
 theme_override_font_sizes/font_size = 15
 text = "Ma Thida (Trader)"
 horizontal_alignment = 1
 
-[node name="Hint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
-custom_minimum_size = Vector2(0, 70)
+[node name="ThidaHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/ThidaCard/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
 theme_override_font_sizes/font_size = 12
@@ -231,15 +235,16 @@ texture = ExtResource("4_aung_avatar")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Name" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+[node name="AungName" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
 theme_override_font_sizes/font_size = 15
 text = "Ko Aung (Taxi Driver)"
 horizontal_alignment = 1
 
-[node name="Hint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
-custom_minimum_size = Vector2(0, 70)
+[node name="AungHint" type="Label" parent="CenterContainer/PuzzleCard/MarginContainer/VBoxContainer/CustomersContainer/AungCard/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.88, 0.92, 1)
 theme_override_font_sizes/font_size = 12

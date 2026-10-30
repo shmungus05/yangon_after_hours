@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/location_scene.gd" id="1_loc_script"]
 [ext_resource type="Script" path="res://scripts/interactable_hotspot.gd" id="2_hotspot_script"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/components/dialogue_panel.tscn" id="4_dialogue_panel"]
 [ext_resource type="Texture2D" path="res://assets/avatars/watchman.png" id="5_avatar"]
 [ext_resource type="PackedScene" path="res://scenes/components/notebook_panel.tscn" id="6_notebook_panel"]
+[ext_resource type="PackedScene" path="res://scenes/components/delivery_puzzle_panel.tscn" id="7_delivery_puzzle"]
 
 [node name="Downtown" type="Control"]
 layout_mode = 3
@@ -181,6 +182,28 @@ clue_id = "downtown_tire_tracks"
 clue_title = "Waterfront Tire Tracks"
 clue_description = "Fresh bicycle tire tracks visible under the streetlamp puddle leading south toward the river docks."
 
+[node name="DeliveryHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(270, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.54
+anchor_top = 0.44
+anchor_right = 0.54
+anchor_bottom = 0.44
+offset_left = -135.0
+offset_top = -25.0
+offset_right = 135.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 15
+text = "🏛️ Heritage Vault Gate (Delivery)"
+script = ExtResource("2_hotspot_script")
+display_name = "Heritage Vault Gate"
+speaker_name = "🔍 Inspect: Heritage Vault Gate"
+
 [node name="NarrativePanel" type="PanelContainer" parent="MarginContainer/MainLayout"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 84)
@@ -207,6 +230,11 @@ visible = false
 layout_mode = 1
 
 [node name="NotebookPanel" parent="." instance=ExtResource("6_notebook_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="DeliveryPuzzlePanel" parent="." instance=ExtResource("7_delivery_puzzle")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
