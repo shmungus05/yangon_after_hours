@@ -1,6 +1,7 @@
 extends Control
 
 const Localization = preload("res://scripts/localization.gd")
+const InspectionPanel = preload("res://scripts/inspection_panel.gd")
 
 ## Base script for location scenes in Yangon After Hours.
 ## Manages point-and-click hotspots, dialogue panel, notebook, puzzles, and map navigation.
@@ -23,6 +24,7 @@ const Localization = preload("res://scripts/localization.gd")
 @onready var tea_puzzle_panel: TeaPuzzlePanel = get_node_or_null("%TeaPuzzlePanel")
 @onready var market_puzzle_panel: MarketPuzzlePanel = get_node_or_null("%MarketPuzzlePanel")
 @onready var delivery_puzzle_panel: DeliveryPuzzlePanel = get_node_or_null("%DeliveryPuzzlePanel")
+@onready var inspection_panel: InspectionPanel = get_node_or_null("%InspectionPanel")
 
 var _lang_button: Button = null
 
@@ -41,6 +43,7 @@ func _ready() -> void:
 	
 	_create_language_button()
 	_connect_dialogue_panel()
+	_connect_inspection_panel()
 	_connect_notebook()
 	_connect_puzzle()
 	_connect_hotspots()
@@ -102,6 +105,17 @@ func _connect_dialogue_panel() -> void:
 		dialogue_panel.dialogue_started.connect(_on_dialogue_started)
 		dialogue_panel.dialogue_closed.connect(_on_dialogue_closed)
 
+func _connect_inspection_panel() -> void:
+	if inspection_panel:
+		inspection_panel.clue_collected.connect(func(_cid): _update_notebook_button())
+		inspection_panel.inspection_opened.connect(func(_oid):
+			if narrative_panel: narrative_panel.visible = false
+		)
+		inspection_panel.inspection_closed.connect(func():
+			if narrative_panel: narrative_panel.visible = true
+			_update_notebook_button()
+		)
+
 func _connect_notebook() -> void:
 	if notebook_button and not notebook_button.pressed.is_connected(_on_notebook_pressed):
 		notebook_button.pressed.connect(_on_notebook_pressed)
@@ -143,6 +157,11 @@ func _on_hotspot_interacted(hotspot: InteractableHotspot) -> void:
 	var game_state = get_node_or_null("/root/GameState")
 	var lang: String = game_state.get_language() if game_state else "my"
 	
+	# Trigger dedicated inspection if applicable
+	if not hotspot.inspection_target_id.is_empty() and inspection_panel:
+		inspection_panel.open_inspection(hotspot.inspection_target_id)
+		return
+	
 	# Trigger dedicated puzzles if applicable
 	if hotspot.name == "TeaOrdersHotspot" and tea_puzzle_panel:
 		tea_puzzle_panel.open_puzzle()
@@ -152,6 +171,14 @@ func _on_hotspot_interacted(hotspot: InteractableHotspot) -> void:
 		return
 	if hotspot.name == "DeliveryHotspot" and delivery_puzzle_panel:
 		delivery_puzzle_panel.open_puzzle()
+		return
+	
+	# Trigger dedicated interactive questioning if hotspot is an interrogation character
+	if not hotspot.character_id.is_empty() and dialogue_panel:
+		var h_char_data: Dictionary = Localization.get_hotspot_data(hotspot.name, lang)
+		var spkr: String = h_char_data.get("speaker", hotspot.speaker_name)
+		var avtr: Texture2D = hotspot.avatar_texture if "avatar_texture" in hotspot else null
+		dialogue_panel.start_questioning(hotspot.character_id, spkr, avtr)
 		return
 	
 	var h_data: Dictionary = Localization.get_hotspot_data(hotspot.name, lang)

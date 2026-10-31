@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scripts/location_scene.gd" id="1_loc_script"]
 [ext_resource type="Script" path="res://scripts/interactable_hotspot.gd" id="2_hotspot_script"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" path="res://assets/avatars/ma_thida.png" id="8_thida_avatar"]
 [ext_resource type="Texture2D" path="res://assets/avatars/saya_min.png" id="9_min_avatar"]
 [ext_resource type="Texture2D" path="res://assets/avatars/ko_aung.png" id="10_aung_avatar"]
+[ext_resource type="PackedScene" path="res://scenes/components/inspection_panel.tscn" id="11_inspect_panel"]
 
 [node name="TeaShop" type="Control"]
 layout_mode = 3
@@ -132,6 +133,7 @@ script = ExtResource("2_hotspot_script")
 display_name = "Tea Master Ko Zaw"
 speaker_name = "✦ Tea Master Ko Zaw"
 is_character = true
+character_id = "ko_zaw"
 avatar_texture = ExtResource("5_avatar")
 dialogue_lines = Array[String](["Mingalarbar! Welcome to Lucky Tea Shop. Freshly brewed sweet tea is ready on the stove.", "The tea shop got crowded earlier and I mixed up the three tea cups on Table Three! Can you help me serve them?", "Ask Saya Min, Ma Thida, and Ko Aung about their preferences, then use the Tea Orders Tray on the counter to serve them!"])
 
@@ -285,6 +287,72 @@ clue_id = "tea_scratched_cipher"
 clue_title = "Hastily Scratched Napkin Note"
 clue_description = "Underneath a wet napkin on 38th Street, someone scratched: 'Check Sule Pagoda notice board before 1 AM.'"
 
+[node name="NotebookHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.32
+anchor_top = 0.82
+anchor_right = 0.32
+anchor_bottom = 0.82
+offset_left = -105.0
+offset_top = -23.0
+offset_right = 105.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Abandoned Notebook"
+script = ExtResource("2_hotspot_script")
+display_name = "Abandoned Notebook"
+speaker_name = "🔍 Inspect: Leather Notebook"
+inspection_target_id = "tea_notebook"
+
+[node name="ReceiptHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.38
+anchor_top = 0.54
+anchor_right = 0.38
+anchor_bottom = 0.54
+offset_left = -95.0
+offset_top = -23.0
+offset_right = 95.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Crumpled Receipt"
+script = ExtResource("2_hotspot_script")
+display_name = "Crumpled Receipt"
+speaker_name = "🔍 Inspect: Tea Order Receipt"
+inspection_target_id = "tea_receipt"
+
+[node name="ClockHotspot" type="Button" parent="MarginContainer/MainLayout/HotspotArea"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 46)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.52
+anchor_top = 0.18
+anchor_right = 0.52
+anchor_bottom = 0.18
+offset_left = -100.0
+offset_top = -23.0
+offset_right = 100.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 15
+text = " 🔍 Antique Wall Clock"
+script = ExtResource("2_hotspot_script")
+display_name = "Antique Wall Clock"
+speaker_name = "🔍 Inspect: Teak Wall Clock"
+inspection_target_id = "tea_clock"
+
 [node name="NarrativePanel" type="PanelContainer" parent="MarginContainer/MainLayout"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 84)
@@ -316,6 +384,11 @@ visible = false
 layout_mode = 1
 
 [node name="TeaPuzzlePanel" parent="." instance=ExtResource("7_puzzle_panel")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="InspectionPanel" parent="." instance=ExtResource("11_inspect_panel")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1

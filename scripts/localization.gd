@@ -44,15 +44,48 @@ const UI_TEXTS: Dictionary = {
 		"DIALOGUE_CONTINUE": "Continue ▶",
 		"DIALOGUE_HINT": "Tap anywhere or click Continue to advance",
 		
-		# Notebook Panel Common
-		"NOTEBOOK_TITLE": "📓 INVESTIGATOR'S NOTEBOOK",
-		"NOTEBOOK_SUBTITLE": "Documented Clues & Evidence",
+		# Notebook & Investigation Board
+		"NOTEBOOK_TITLE": "📓 INVESTIGATION BOARD",
+		"NOTEBOOK_SUBTITLE": "Connect Clues, Analyze Evidence & Synthesize Deductions",
+		"NOTEBOOK_TAB_CLUES": "🔍 Evidence & Clues (%d)",
+		"NOTEBOOK_TAB_DEDUCTIONS": "💡 Deductions (%d)",
 		"NOTEBOOK_EMPTY": "No clues collected yet. Explore locations, talk to people, and inspect suspicious objects!",
 		"NOTEBOOK_COUNT": "Recorded Clues: %d",
+		"NOTEBOOK_DEDUCTION_COUNT": "Case Deductions: %d",
 		"NOTEBOOK_CLOSE": "✕ Close",
+		"NOTEBOOK_WORKBENCH_TITLE": "🔗 Evidence Synthesis Workbench",
+		"NOTEBOOK_WORKBENCH_HINT": "Click any 2 clues above to analyze their connection",
+		"NOTEBOOK_SLOT_EMPTY": "+ Select Clue",
+		"NOTEBOOK_DEDUCE_BTN": "⚡ Connect Clues",
+		"NOTEBOOK_CLEAR_BTN": "↺ Clear",
+		"NOTEBOOK_DEDUCTIONS_EMPTY": "No deductions formed yet.\n\nIn the Evidence tab, select and connect two related clues to uncover new deductions!",
+		"NOTEBOOK_FEEDBACK_SELECT_TWO": "Select a second clue to attempt a deduction connection.",
+		"NOTEBOOK_FEEDBACK_NO_MATCH": "These clues do not appear to connect directly. Review their timeline, location, or details.",
+		"NOTEBOOK_FEEDBACK_ALREADY": "You have already connected these clues: %s",
+		"NOTEBOOK_FEEDBACK_SUCCESS": "🎉 New Deduction Unlocked: %s!",
+		"NOTEBOOK_CONNECTED_LABEL": "Synthesized from: ",
 		
 		# Clue Notice in Dialogue
-		"CLUE_RECORDED": "📓 [ CLUE RECORDED IN NOTEBOOK: %s ]"
+		"CLUE_RECORDED": "📓 [ CLUE RECORDED IN NOTEBOOK: %s ]",
+		
+		# Inspection Panel
+		"INSPECT_PROMPT": "Tap or click highlighted areas on the object to investigate details.",
+		"INSPECT_CLOSE": "✕ Close",
+		"INSPECT_RETURN": "← Back to Room",
+		"INSPECT_CLUE_FOUND": "📓 [ NEW CLUE RECORDED: %s ]",
+		"INSPECT_CLUE_ALREADY": "📓 [ Already documented in notebook: %s ]",
+		"INSPECT_INITIAL_OBS": "Click a highlighted area on the object to examine details.",
+		"INSPECT_OBS_TITLE": "✦ Detail Observation",
+		"INSPECT_NOTEBOOK_BTN": "📓 Open Notebook (%d)",
+		
+		# Interactive Questioning & Interrogation
+		"QUESTIONING_PRESENT_EVIDENCE": "💼 Present Evidence...",
+		"QUESTIONING_LEAVE": "✕ Leave Conversation",
+		"QUESTIONING_BACK": "← Back to Questions",
+		"QUESTIONING_SELECT_CLUE": "Select a clue from your notebook to present to %s:",
+		"QUESTIONING_NO_CLUES": "You haven't collected any clues in your notebook yet.",
+		"QUESTIONING_PROMPT_DEFAULT": "How can I help with your investigation, Detective?",
+		"QUESTIONING_PROMPT_MORE": "Anything else you would like to ask?"
 	},
 	"my": {
 		# Main Menu
@@ -93,19 +126,83 @@ const UI_TEXTS: Dictionary = {
 		"DIALOGUE_CONTINUE": "ဆက်သွားမည် ▶",
 		"DIALOGUE_HINT": "ရှေ့သို့ဆက်ရန် နေရာလွတ်ကို နှိပ်ပါ သို့မဟုတ် ဆက်သွားမည် ကို နှိပ်ပါ",
 		
-		# Notebook Panel Common
-		"NOTEBOOK_TITLE": "📓 စုံထောက်မှတ်စုစာအုပ်",
-		"NOTEBOOK_SUBTITLE": "မှတ်တမ်းတင်ထားသော သဲလွန်စများနှင့် သက်သေအထောက်အထားများ",
+		# Notebook & Investigation Board
+		"NOTEBOOK_TITLE": "📓 စုံစမ်းစစ်ဆေးရေး ဘုတ်ပြား",
+		"NOTEBOOK_SUBTITLE": "သဲလွန်စများကို ချိတ်ဆက်ပြီး သက်သေအထောက်အထားများမှ ကောက်ချက်ချပါ",
+		"NOTEBOOK_TAB_CLUES": "🔍 သဲလွန်စများ (%d)",
+		"NOTEBOOK_TAB_DEDUCTIONS": "💡 ကောက်ချက်ချမှုများ (%d)",
 		"NOTEBOOK_EMPTY": "သဲလွန်စ မရသေးပါ။ နေရာများကို စူးစမ်းပါ၊ လူများနှင့် စကားပြောပါ၊ မသင်္ကာဖွယ်ရာများကို စစ်ဆေးပါ!",
 		"NOTEBOOK_COUNT": "တွေ့ရှိသော သဲလွန်စများ - %d",
+		"NOTEBOOK_DEDUCTION_COUNT": "ကောက်ချက်ချမှုများ - %d",
 		"NOTEBOOK_CLOSE": "✕ ပိတ်မည်",
+		"NOTEBOOK_WORKBENCH_TITLE": "🔗 သက်သေအထောက်အထား ပေါင်းစပ်ခုံ",
+		"NOTEBOOK_WORKBENCH_HINT": "အထက်ပါ သဲလွန်စ ၂ ခုကို နှိပ်ပြီး ဆက်စပ်မှုကို ပေါင်းစပ်စစ်ဆေးပါ",
+		"NOTEBOOK_SLOT_EMPTY": "+ သဲလွန်စရွေးပါ",
+		"NOTEBOOK_DEDUCE_BTN": "⚡ ဆက်စပ်ကောက်ချက်ချမည်",
+		"NOTEBOOK_CLEAR_BTN": "↺ ရှင်းမည်",
+		"NOTEBOOK_DEDUCTIONS_EMPTY": "ကောက်ချက်ချမှု မရှိသေးပါ။\n\nသဲလွန်စများကဏ္ဍတွင် ဆက်စပ်နေသော သဲလွန်စ ၂ ခုကို ရွေးချယ်ပေါင်းစပ်ပါ။",
+		"NOTEBOOK_FEEDBACK_SELECT_TWO": "ဆက်စပ်မှုရှာရန် နောက်ထပ် သဲလွန်စတစ်ခု ထပ်မံရွေးချယ်ပါ။",
+		"NOTEBOOK_FEEDBACK_NO_MATCH": "ဤသဲလွန်စနှစ်ခု တိုက်ရိုက်မဆက်စပ်သေးပါ။ အချိန်၊ နေရာ သို့မဟုတ် အကြောင်းအရာများကို ပြန်လည်စဉ်းစားပါ။",
+		"NOTEBOOK_FEEDBACK_ALREADY": "ဤသဲလွန်စများကို ပေါင်းစပ်ကောက်ချက်ချပြီးဖြစ်သည် - %s",
+		"NOTEBOOK_FEEDBACK_SUCCESS": "🎉 ကောက်ချက်အသစ် ဖော်ထုတ်နိုင်ခဲ့သည် - %s!",
+		"NOTEBOOK_CONNECTED_LABEL": "ပေါင်းစပ်ထားသော သဲလွန်စများ - ",
 		
 		# Clue Notice in Dialogue
-		"CLUE_RECORDED": "📓 [ သဲလွန်စ မှတ်တမ်းတင်ပြီးပါပြီ - %s ]"
+		"CLUE_RECORDED": "📓 [ သဲလွန်စ မှတ်တမ်းတင်ပြီးပါပြီ - %s ]",
+		
+		# Inspection Panel
+		"INSPECT_PROMPT": "အသေးစိတ်စုံစမ်းရန် အရာဝတ္ထုပေါ်ရှိ မီးမောင်းထိုးထားသော နေရာများကို နှိပ်ပါ။",
+		"INSPECT_CLOSE": "✕ ပိတ်မည်",
+		"INSPECT_RETURN": "← ဆိုင်ထဲသို့ ပြန်သွားမည်",
+		"INSPECT_CLUE_FOUND": "📓 [ သဲလွန်စအသစ် မှတ်တမ်းတင်ပြီး - %s ]",
+		"INSPECT_CLUE_ALREADY": "📓 [ မှတ်စုစာအုပ်ထဲ မှတ်တမ်းတင်ပြီးဖြစ်သည် - %s ]",
+		"INSPECT_INITIAL_OBS": "အသေးစိတ်ကြည့်ရှုရန် အရာဝတ္ထုပေါ်ရှိ နေရာတစ်ခုခုကို နှိပ်ပါ။",
+		"INSPECT_OBS_TITLE": "✦ အသေးစိတ် စစ်ဆေးတွေ့ရှိချက်",
+		"INSPECT_NOTEBOOK_BTN": "📓 မှတ်စုစာအုပ် ဖွင့်မည် (%d)",
+		
+		# Interactive Questioning & Interrogation
+		"QUESTIONING_PRESENT_EVIDENCE": "💼 သဲလွန်စ အထောက်အထား တင်ပြမည်...",
+		"QUESTIONING_LEAVE": "✕ စကားပြောခြင်း ပြီးဆုံးမည်",
+		"QUESTIONING_BACK": "← မေးခွန်းများသို့ ပြန်သွားမည်",
+		"QUESTIONING_SELECT_CLUE": "%s ထံ တင်ပြရန် မှတ်စုစာအုပ်ထဲမှ သဲလွန်စတစ်ခုကို ရွေးချယ်ပါ -",
+		"QUESTIONING_NO_CLUES": "တင်ပြရန် မှတ်စုစာအုပ်ထဲတွင် သဲလွန်စ မရှိသေးပါ။",
+		"QUESTIONING_PROMPT_DEFAULT": "စုံစမ်းစစ်ဆေးမှုအတွက် ဘာများ မေးမြန်းလိုပါသလဲခင်ဗျာ?",
+		"QUESTIONING_PROMPT_MORE": "အခြား ဘာများ မေးမြန်းလိုပါသေးသလဲခင်ဗျာ?"
 	}
 }
 
 const HOTSPOTS: Dictionary = {
+	# Inspection Hotspots
+	"NotebookHotspot": {
+		"en": {
+			"button_text": " 🔍 Abandoned Notebook",
+			"speaker": "🔍 Inspect: Leather Notebook"
+		},
+		"my": {
+			"button_text": " 🔍 ကျန်ရစ်ခဲ့သော မှတ်စုစာအုပ်",
+			"speaker": "🔍 စစ်ဆေးခြင်း - သားရေမှတ်စုစာအုပ်"
+		}
+	},
+	"ReceiptHotspot": {
+		"en": {
+			"button_text": " 🔍 Crumpled Receipt",
+			"speaker": "🔍 Inspect: Tea Order Receipt"
+		},
+		"my": {
+			"button_text": " 🔍 တွန့်ကျေနေသော ဘေလ်ဖြတ်ပိုင်း",
+			"speaker": "🔍 စစ်ဆေးခြင်း - ဘေလ်ဖြတ်ပိုင်း"
+		}
+	},
+	"ClockHotspot": {
+		"en": {
+			"button_text": " 🔍 Antique Wall Clock",
+			"speaker": "🔍 Inspect: Teak Wall Clock"
+		},
+		"my": {
+			"button_text": " 🔍 ရှေးဟောင်း နံရံကပ်နာရီ",
+			"speaker": "🔍 စစ်ဆေးခြင်း - နံရံကပ်နာရီ"
+		}
+	},
 	# Tea Shop Hotspots
 	"TeaMasterHotspot": {
 		"en": {
@@ -411,6 +508,7 @@ const HOTSPOTS: Dictionary = {
 
 const CLUES: Dictionary = {
 	"tea_port_newspaper": {
+		"icon": "📰",
 		"en": {
 			"title": "Circled Port Cargo Article",
 			"description": "A yesterday newspaper article tucked behind the tea kettle with a red ink circle around 'Mysterious Night Cargo Unloaded at Yangon Port'.",
@@ -422,7 +520,47 @@ const CLUES: Dictionary = {
 			"location": "လပ်ကီးလက်ဖက်ရည်ဆိုင်"
 		}
 	},
+	"tea_notebook_cipher": {
+		"icon": "📜",
+		"en": {
+			"title": "Cipher in the Left-Behind Notebook",
+			"description": "A handwritten cipher in the leather notebook: 'Deliver parcel to Pier 4 before midnight whistle. Watch the shadows.'",
+			"location": "Lucky Tea Shop"
+		},
+		"my": {
+			"title": "မှတ်စုစာအုပ်ပါ လျှို့ဝှက်ကုဒ်",
+			"description": "သားရေမှတ်စုထဲတွင် 'သန်းခေါင်ယံ ဥဩမဆွဲမီ အထုပ်ကို ဆိပ်ခံတံတား (၄) သို့ ပို့ပါ။ အရိပ်တွေကို သတိထားပါ' ဟု ရေးထားသည်။",
+			"location": "လပ်ကီးလက်ဖက်ရည်ဆိုင်"
+		}
+	},
+	"tea_receipt_timestamp": {
+		"icon": "🧾",
+		"en": {
+			"title": "Late-Night Order Timestamp",
+			"description": "The tea shop cash register stamped 11:42 PM on Table 3's bill, mere minutes before the commotion.",
+			"location": "Lucky Tea Shop"
+		},
+		"my": {
+			"title": "ညဉ့်နက် လက်ဖက်ရည်ဆိုင် ဘေလ်အချိန်",
+			"description": "စားပွဲ (၃) ဘေလ်ပေါ်တွင် ၁၁:၄၂ ဟု အချိန်တံဆိပ်ရိုက်နှိပ်ထားသည်—ရုတ်ရုတ်သဲသဲ မဖြစ်မီ မိနစ်ပိုင်းအလို။",
+			"location": "လပ်ကီးလက်ဖက်ရည်ဆိုင်"
+		}
+	},
+	"tea_clock_stopped_time": {
+		"icon": "🕒",
+		"en": {
+			"title": "Stopped Clock at 11:45 PM",
+			"description": "The antique wall clock hands stopped abruptly at 11:45 PM, exactly when the mysterious figure fled.",
+			"location": "Lucky Tea Shop"
+		},
+		"my": {
+			"title": "၁၁:၄၅ တွင် ရပ်တန့်နေသော နံရံကပ်နာရီ",
+			"description": "လျှို့ဝှက်လူ ထွက်ပြေးသွားချိန်ဖြစ်သော ညဉ့်နက် ၁၁:၄၅ အတိတွင် ရှေးဟောင်းနံရံကပ်နာရီ ရပ်တန့်သွားခဲ့သည်။",
+			"location": "လပ်ကီးလက်ဖက်ရည်ဆိုင်"
+		}
+	},
 	"harbor_cargo_slip": {
+		"icon": "⚓",
 		"en": {
 			"title": "Stained Harbor Cargo Slip",
 			"description": "A rain-soaked delivery receipt dropped at the tea shop: 'Pier 4 - Midnight Unloading - Container #7 with Royal Hintha Seal'.",
@@ -435,6 +573,7 @@ const CLUES: Dictionary = {
 		}
 	},
 	"market_cargo_crates": {
+		"icon": "📦",
 		"en": {
 			"title": "Wax-Sealed Riverboat Crates",
 			"description": "Wooden crates stacked on the moored riverboat stamped 'Pier 4 Riverboat Cargo Stash'.",
@@ -447,6 +586,7 @@ const CLUES: Dictionary = {
 		}
 	},
 	"market_peacock_coin": {
+		"icon": "🪙",
 		"en": {
 			"title": "Antique Peacock Brass Coin",
 			"description": "An antique brass coin bearing an embossed royal Burmese peacock seal, dropped between lime baskets.",
@@ -459,6 +599,7 @@ const CLUES: Dictionary = {
 		}
 	},
 	"vendor_delivery_ledger": {
+		"icon": "📔",
 		"en": {
 			"title": "Vendor's Midnight Delivery Ledger",
 			"description": "Ko Lin's recovered notebook contains the midnight delivery dispatch: Consignment #4 must be delivered to Heritage Vault Keeper U Ba at Downtown Sule using Secret Passcode 1886.",
@@ -471,6 +612,7 @@ const CLUES: Dictionary = {
 		}
 	},
 	"downtown_pier_note": {
+		"icon": "✉️",
 		"en": {
 			"title": "Midnight Pier Rendezvous Note",
 			"description": "A handwritten scrap of paper pinned to the colonial bulletin board: 'Midnight rendezvous confirmed at Strand Road cargo pier.'",
@@ -483,6 +625,7 @@ const CLUES: Dictionary = {
 		}
 	},
 	"downtown_tire_tracks": {
+		"icon": "🚲",
 		"en": {
 			"title": "Waterfront Tire Tracks",
 			"description": "Fresh bicycle tire tracks visible under the streetlamp puddle leading south toward the river docks.",
@@ -495,6 +638,7 @@ const CLUES: Dictionary = {
 		}
 	},
 	"heritage_vault_secured": {
+		"icon": "🏛️",
 		"en": {
 			"title": "Heritage Vault Secured & Relics Restored",
 			"description": "The midnight cargo of stolen 19th-century colonial brass relics and royal lacquered manuscripts has been safely secured in the Downtown vault!",
@@ -504,6 +648,51 @@ const CLUES: Dictionary = {
 			"title": "ရှေးဟောင်းတိုက်လုံခြုံပြီး အမွေအနှစ်များ ပြန်လည်ထိန်းသိမ်းနိုင်ခဲ့ခြင်း",
 			"description": "ခိုးယူခံရသော ၁၉ ရာစု ရှေးဟောင်းကြေးထည်များနှင့် တော်ဝင်သစ်စေးယွန်းပေစာများကို မြို့လယ်တိုက်ခန်းထဲတွင် အောင်မြင်စွာ ထိန်းသိမ်းနိုင်ခဲ့ပြီ!",
 			"location": "မြို့လယ် (ဆူးလေ)"
+		}
+	}
+}
+
+const DEDUCTIONS: Dictionary = {
+	"deduction_tea_three_minutes": {
+		"clues": ["tea_receipt_timestamp", "tea_clock_stopped_time"],
+		"icon": "⏱️",
+		"en": {
+			"title": "The Three-Minute Rush",
+			"description": "Table 3's receipt was stamped at 11:42 PM, and the antique wall clock jammed at 11:45 PM. The entire incident occurred in a frantic 3-minute window—the suspect fled immediately after paying!",
+			"summary": "Suspect paid at 11:42 PM and fled at 11:45 PM."
+		},
+		"my": {
+			"title": "သုံးမိနစ်ကြာ အလျင်စလိုဖြစ်စဉ်",
+			"description": "စားပွဲ (၃) ၏ ဘေလ်ရှင်းချိန်သည် ၁၁:၄၂ ဖြစ်ပြီး နံရံကပ်နာရီသည် ၁၁:၄၅ တွင် ရပ်တန့်သွားသည်။ ဖြစ်စဉ်တစ်ခုလုံးသည် အလျင်စလို ၃ မိနစ်အတွင်း ဖြစ်ပွားခဲ့ခြင်းဖြစ်သည်—ငွေရှင်းပြီးသည်နှင့် သံသယရှိသူ ချက်ချင်းပြေးထွက်သွားခဲ့သည်!",
+			"summary": "သံသယရှိသူသည် ၁၁:၄၂ တွင် ငွေရှင်းပြီး ၁၁:၄၅ တွင် ပြေးထွက်သွားခဲ့သည်။"
+		}
+	},
+	"deduction_tea_pier_rendezvous": {
+		"clues": ["tea_notebook_cipher", "harbor_cargo_slip"],
+		"icon": "⚓",
+		"en": {
+			"title": "Midnight Rendezvous at Pier 4",
+			"description": "The cipher left in the abandoned notebook ordered a delivery to Pier 4 before the midnight whistle, matching the harbor cargo slip for Container #7. The fugitive is heading to Pier 4 on the riverfront!",
+			"summary": "Fugitive and midnight cargo are converging on Pier 4."
+		},
+		"my": {
+			"title": "ဆိပ်ခံ (၄) သန်းခေါင်ယံ တွေ့ဆုံမှု",
+			"description": "ကျန်ရစ်ခဲ့သော သားရေမှတ်စုပါ လျှို့ဝှက်ကုဒ်တွင် သန်းခေါင်ယံမတိုင်မီ ဆိပ်ခံ (၄) သို့ အထုပ်ပို့ရန် ညွှန်ကြားထားပြီး ဆိပ်ကမ်းကုန်လက်မှတ်ပါ သေတ္တာ #၇ နှင့် ကိုက်ညီနေသည်။ ထွက်ပြေးသူသည် မြစ်ကမ်းနား ဆိပ်ခံ (၄) သို့ ဦးတည်သွားနေသည်!",
+			"summary": "ထွက်ပြေးသူနှင့် သန်းခေါင်ယံကုန်စည်တို့သည် ဆိပ်ခံ (၄) တွင် တွေ့ဆုံမည်ဖြစ်သည်။"
+		}
+	},
+	"deduction_tea_smuggling_ring": {
+		"clues": ["tea_port_newspaper", "harbor_cargo_slip"],
+		"icon": "🕵️",
+		"en": {
+			"title": "Covert Midnight Smuggling Ring",
+			"description": "The circled port newspaper article about suspicious late-night cargo aligns with the stained slip bearing the Royal Hintha Seal. This incident is tied to an organized midnight smuggling network operating on Strand Road!",
+			"summary": "An organized smuggling syndicate is moving relics through Yangon port."
+		},
+		"my": {
+			"title": "လျှို့ဝှက်ဆိပ်ကမ်း ကုန်မှောင်ခိုလှုပ်ရှားမှု",
+			"description": "သတင်းစာတွင် ဝိုင်းထားသော ဆိပ်ကမ်းကုန်စည်သတင်းသည် တော်ဝင်ဟင်္သာတံဆိပ်ပါ ကုန်လက်မှတ်နှင့် တိုက်ရိုက်ဆက်စပ်နေသည်။ ဤသည်မှာ သာမန်ခိုးမှုမဟုတ်ဘဲ ကမ်းနားလမ်းတွင် လှုပ်ရှားနေသော စနစ်တကျ ကုန်မှောင်ခိုဂိုဏ်းတစ်ခု ဖြစ်သည်!",
+			"summary": "စနစ်တကျ ဖွဲ့စည်းထားသော မှောင်ခိုဂိုဏ်းတစ်ခုသည် ရန်ကုန်ဆိပ်ကမ်းမှတစ်ဆင့် ရှေးဟောင်းပစ္စည်းများ သယ်ယူနေသည်။"
 		}
 	}
 }
@@ -859,12 +1048,34 @@ static func get_clue_data(clue_id: String, lang: String) -> Dictionary:
 			data = c[l].duplicate()
 		elif c.has("en"):
 			data = c["en"].duplicate()
+		data["icon"] = c.get("icon", "🔍")
 		if data.has("description") and not data.has("desc"):
 			data["desc"] = data["description"]
 		elif data.has("desc") and not data.has("description"):
 			data["description"] = data["desc"]
 		return data
 	return {}
+
+static func get_deduction_data(deduction_id: String, lang: String) -> Dictionary:
+	var l = lang if lang == "my" else "en"
+	if DEDUCTIONS.has(deduction_id):
+		var d = DEDUCTIONS[deduction_id]
+		var data: Dictionary = {}
+		if d.has(l):
+			data = d[l].duplicate(true)
+		elif d.has("en"):
+			data = d["en"].duplicate(true)
+		data["id"] = deduction_id
+		data["icon"] = d.get("icon", "💡")
+		data["clues"] = d.get("clues", []).duplicate()
+		return data
+	return {}
+
+static func get_all_deductions_data(lang: String) -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for did in DEDUCTIONS:
+		result.append(get_deduction_data(did, lang))
+	return result
 
 static func get_tea_puzzle_data(lang: String) -> Dictionary:
 	var l = lang if lang == "my" else "en"
@@ -952,3 +1163,388 @@ static func get_delivery_puzzle_data(lang: String) -> Dictionary:
 static func get_ending_data(lang: String) -> Dictionary:
 	var l = lang if lang == "my" else "en"
 	return ENDING[l]
+
+const INSPECTION_OBJECTS: Dictionary = {
+	"tea_notebook": {
+		"en": {
+			"title": "Abandoned Leather Notebook",
+			"subtitle": "Table 3 • Lucky Tea Shop",
+			"texture_path": "res://assets/inspect/tea_notebook.png",
+			"areas": [
+				{
+					"id": "notebook_clasp",
+					"name": "Brass Schooner Clasp",
+					"rect": Rect2(45, 160, 50, 65),
+					"observation": "A worn brass clasp embossed with a three-masted schooner—the emblem of an old trading firm operating on Strand Road."
+				},
+				{
+					"id": "notebook_cipher",
+					"name": "Cipher in Notebook Page",
+					"rect": Rect2(265, 70, 150, 130),
+					"observation": "Beneath tea stains, hurried handwriting reads: 'Deliver parcel to Pier 4 before midnight whistle. Watch the shadows.' A crucial clue!",
+					"clue_id": "tea_notebook_cipher"
+				},
+				{
+					"id": "notebook_pocket",
+					"name": "Inner Pocket & Blotting Paper",
+					"rect": Rect2(95, 230, 140, 80),
+					"observation": "Tucked inside the back lining is pink blotting paper smelling faintly of sandalwood incense and harbor riverboat kerosene."
+				}
+			]
+		},
+		"my": {
+			"title": "ကျန်ရစ်ခဲ့သော သားရေမှတ်စုစာအုပ်",
+			"subtitle": "စားပွဲအမှတ် (၃) • လပ်ကီးလက်ဖက်ရည်ဆိုင်",
+			"texture_path": "res://assets/inspect/tea_notebook.png",
+			"areas": [
+				{
+					"id": "notebook_clasp",
+					"name": "ကြေးရောင် သင်္ဘောတံဆိပ် ခတ်ကွင်း",
+					"rect": Rect2(45, 160, 50, 65),
+					"observation": "ကမ်းနားလမ်းမှ ကိုလိုနီကုန်သွယ်ရေးကုမ္ပဏီတစ်ခု၏ အမှတ်တံဆိပ်ဖြစ်သော သုံးရွက်တိုင်ရွက်လှေပုံ ရိုက်နှိပ်ထားသည့် ကြေးသော့ခတ်ကွင်းဟောင်း။"
+				},
+				{
+					"id": "notebook_cipher",
+					"name": "လျှို့ဝှက်ကုဒ် ရေးထားသော စာမျက်နှာ",
+					"rect": Rect2(265, 70, 150, 130),
+					"observation": "လက်ဖက်ရည်စွန်းထင်းမှုများအောက်တွင် 'သန်းခေါင်ယံ ဥဩမဆွဲမီ အထုပ်ကို ဆိပ်ခံတံတား (၄) သို့ ပို့ပါ။ အရိပ်တွေကို သတိထားပါ' ဟု ရေးထားသော အရေးကြီးသဲလွန်စ!",
+					"clue_id": "tea_notebook_cipher"
+				},
+				{
+					"id": "notebook_pocket",
+					"name": "အတွင်းအိတ်ကပ်နှင့် စက္ကူစုတ်",
+					"rect": Rect2(95, 230, 140, 80),
+					"observation": "အတွင်းအိတ်ကပ်ထဲတွင် စန္ဒကူးနံ့နှင့် ရေနံနံ့သင်းနေသော ပန်းရောင်မှင်စုပ်စက္ကူအပိုင်းအစတစ်ခု ညှပ်ထားသည်။"
+				}
+			]
+		}
+	},
+	"tea_receipt": {
+		"en": {
+			"title": "Crinkled Tea Shop Receipt",
+			"subtitle": "Cashier Counter • Lucky Tea Shop",
+			"texture_path": "res://assets/inspect/tea_receipt.png",
+			"areas": [
+				{
+					"id": "receipt_items",
+					"name": "Order Items",
+					"rect": Rect2(150, 85, 210, 130),
+					"observation": "Order #44: 2x Sweet Milk Tea, 1x Bitter Black, 3x Hot Samosas. Total: 2,500 Kyats. Three customers were sitting together at Table 3."
+				},
+				{
+					"id": "receipt_timestamp",
+					"name": "Cash Register Timestamp",
+					"rect": Rect2(240, 115, 115, 65),
+					"observation": "A purple ink stamp clearly prints: '11:42 PM - Lucky Tea Shop'. This bill was paid just three minutes before the commotion!",
+					"clue_id": "tea_receipt_timestamp"
+				},
+				{
+					"id": "receipt_scribble",
+					"name": "Handwritten Note on Back",
+					"rect": Rect2(160, 250, 190, 60),
+					"observation": "In dark blue ballpoint ink, someone hastily wrote: 'Vault Key with Watchman U Ba'. Could the night watchman be involved?"
+				}
+			]
+		},
+		"my": {
+			"title": "တွန့်ကျေနေသော လက်ဖက်ရည်ဆိုင် ဘေလ်ဖြတ်ပိုင်း",
+			"subtitle": "ငွေကိုင်ကောင်တာ • လပ်ကီးလက်ဖက်ရည်ဆိုင်",
+			"texture_path": "res://assets/inspect/tea_receipt.png",
+			"areas": [
+				{
+					"id": "receipt_items",
+					"name": "မှာယူထားသော စာရင်း",
+					"rect": Rect2(150, 85, 210, 130),
+					"observation": "အော်ဒါ #၄၄ - ချိုစိမ့် ၂ ခွက်၊ အခါး ၁ ခွက်၊ စမူဆာ ၃ ခု။ စုစုပေါင်း ၂,၅၀၀ ကျပ်။ ဧည့်သည် ၃ ဦး စားပွဲ (၃) တွင် အတူထိုင်ခဲ့ကြသည်။"
+				},
+				{
+					"id": "receipt_timestamp",
+					"name": "ငွေကိုင်စက် အချိန်တံဆိပ်",
+					"rect": Rect2(240, 115, 115, 65),
+					"observation": "ခရမ်းရောင်မှင်ဖြင့် '၁၁:၄၂ ည - လပ်ကီးလက်ဖက်ရည်ဆိုင်' ဟု တံဆိပ်ရိုက်ထားသည်။ ဧည့်သည် ပြေးထွက်မသွားမီ ၃ မိနစ်အလိုက ရှင်းထားသောဘေလ်!",
+					"clue_id": "tea_receipt_timestamp"
+				},
+				{
+					"id": "receipt_scribble",
+					"name": "ကျောဘက် လက်ရေးမှတ်စု",
+					"rect": Rect2(160, 250, 190, 60),
+					"observation": "အပြာရောင်ဘောပင်ဖြင့် 'သိုက်သော့ ဦးဘဆီတွင် ရှိသည်' ဟု ရေးထားသည်။ ညစောင့်ဦးဘ ပါဝင်ပတ်သက်နေသလား?"
+				}
+			]
+		}
+	},
+	"tea_clock": {
+		"en": {
+			"title": "Antique Teak Wall Clock",
+			"subtitle": "Dining Hall Wall • Lucky Tea Shop",
+			"texture_path": "res://assets/inspect/tea_clock.png",
+			"areas": [
+				{
+					"id": "clock_hands",
+					"name": "Frozen Hands at 11:45 PM",
+					"rect": Rect2(195, 110, 120, 120),
+					"observation": "The ornate brass hands are jammed at 11:45 PM. The exact minute the tea shop lights surged and the stranger bolted into the rain!",
+					"clue_id": "tea_clock_stopped_time"
+				},
+				{
+					"id": "clock_glass",
+					"name": "Cracked Glass Dial",
+					"rect": Rect2(210, 85, 90, 60),
+					"observation": "A sharp crack runs across the Roman numerals, likely struck by something hard during the frantic rush."
+				},
+				{
+					"id": "clock_pendulum",
+					"name": "Pendulum & Key Chamber",
+					"rect": Rect2(195, 290, 120, 80),
+					"observation": "Inside the pendulum glass housing, a small brass winding key hangs from a red silk cord. The pendulum is stationary."
+				}
+			]
+		},
+		"my": {
+			"title": "ရှေးဟောင်း ကျွန်းသစ်နံရံကပ်နာရီ",
+			"subtitle": "ဆိုင်နံရံ • လပ်ကီးလက်ဖက်ရည်ဆိုင်",
+			"texture_path": "res://assets/inspect/tea_clock.png",
+			"areas": [
+				{
+					"id": "clock_hands",
+					"name": "၁၁:၄၅ တွင် ရပ်တန့်နေသော လက်တံများ",
+					"rect": Rect2(195, 110, 120, 120),
+					"observation": "လက်တံများသည် ညဉ့်နက် ၁၁:၄၅ အတိတွင် ရပ်တန့်နေသည်။ လက်ဖက်ရည်ဆိုင်မီးများ ဝင်းကနဲဖြစ်ပြီး သူစိမ်းပြေးထွက်သွားသည့် အချိန်အတိအကျ!",
+					"clue_id": "tea_clock_stopped_time"
+				},
+				{
+					"id": "clock_glass",
+					"name": "အက်ကွဲနေသော မှန်မျက်နှာပြင်",
+					"rect": Rect2(210, 85, 90, 60),
+					"observation": "နံပါတ်များပေါ်တွင် အက်ရာတစ်ခု ထင်ကျန်နေသည်၊ ရုတ်ရုတ်သဲသဲဖြစ်စဉ် တစ်စုံတစ်ခုနှင့် ထိခိုက်မိခဲ့ပုံရသည်။"
+				},
+				{
+					"id": "clock_pendulum",
+					"name": "ချိန်သီးအိမ်နှင့် လျှို့ဝှက်ခန်း",
+					"rect": Rect2(195, 290, 120, 80),
+					"observation": "မှန်ချိန်သီးအိမ်ထဲတွင် ပိုးကြိုးနီလေးဖြင့် ချည်ထားသော ကြေးသော့ငယ်လေး ရှိနေသည်။ ချိန်သီးသည် ငြိမ်သက်နေသည်။"
+				}
+			]
+		}
+	}
+}
+
+static func get_inspection_data(object_id: String, lang: String) -> Dictionary:
+	var l = lang if lang == "my" else "en"
+	if INSPECTION_OBJECTS.has(object_id):
+		var obj = INSPECTION_OBJECTS[object_id]
+		if obj.has(l):
+			return obj[l].duplicate(true)
+		elif obj.has("en"):
+			return obj["en"].duplicate(true)
+	return {}
+
+const CHARACTER_QUESTIONING: Dictionary = {
+	"ko_zaw": {
+		"speaker": {
+			"en": "✦ Tea Master Ko Zaw",
+			"my": "✦ လက်ဖက်ရည်ဆရာ ကိုဇော်"
+		},
+		"greetings": {
+			"default": {
+				"en": "Mingalarbar! Fresh tea is on the stove. How can I help your investigation, Detective?",
+				"my": "မင်္ဂလာပါခင်ဗျာ! မီးဖိုပေါ်မှာ လက်ဖက်ရည် အဆင်သင့်ရှိပါတယ်။ စုံစမ်းစစ်ဆေးမှုအတွက် ဘာများ မေးမြန်းလိုပါသလဲခင်ဗျာ?"
+			},
+			"solved": {
+				"en": "Mingalarbar! Thanks to your keen deduction, Table Three is happily drinking their favorite tea! How can I help your investigation?",
+				"my": "မင်္ဂလာပါ! မင်းရဲ့ ထက်မြက်တဲ့ စုံစမ်းမှုကြောင့် စားပွဲအမှတ် (၃) က ဧည့်သည်တွေ လက်ဖက်ရည် သောက်နေကြပါပြီ! အခြား ဘာများ မေးချင်ပါသေးသလဲခင်ဗျာ?"
+			},
+			"after_confession": {
+				"en": "Detective, I'm ready to answer anything honestly now. What else do you need to know?",
+				"my": "စုံထောက်ကြီး၊ ကျွန်တော် အမှန်အတိုင်း အကုန် ဖြေဖို့ အဆင်သင့်ပါပဲဗျာ။ ဘာများ သိချင်ပါသေးသလဲခင်ဗျာ?"
+			}
+		},
+		"questions": [
+			{
+				"id": "q_commotion",
+				"text": {
+					"en": "What happened during the late-night commotion?",
+					"my": "ညဉ့်နက်ဖြစ်ပျက်ခဲ့တဲ့ အခြေအနေကို မေးမြန်းမည်"
+				},
+				"dialogue_initial": {
+					"en": [
+						"It was quiet until around midnight. A stranger in a dark raincoat was drinking tea at Table 3.",
+						"Around 12:00 AM midnight, the shop lights surged and he bolted into the rain as lightning struck outside!"
+					],
+					"my": [
+						"သန်းခေါင်ယံနီးတဲ့အထိ အေးအေးဆေးဆေးပါပဲ။ မိုးကာအင်္ကျီအမည်းနဲ့ လူတစ်ယောက် စားပွဲ ၃ မှာ လက်ဖက်ရည်ခါး သောက်နေခဲ့တယ်။",
+						"ညဉ့်နက် ၁၂ နာရီလောက်မှာ ဆိုင်မီးတွေ ဝင်းကနဲဖြစ်ပြီး မိုးကြိုးပစ်တော့ သူ မိုးထဲရေထဲ အလောတကြီး ပြေးထွက်သွားတယ်ဗျာ!"
+					]
+				},
+				"dialogue_revealed": {
+					"en": [
+						"As I admitted when you showed me that receipt—he didn't leave at midnight.",
+						"He paid at 11:42 PM and bolted at 11:45 PM sharp, asking if Ko Aung's taxi was outside!"
+					],
+					"my": [
+						"ဘေလ်ဖြတ်ပိုင်းကို ပြပြီးနောက် ကျွန်တော် ဝန်ခံခဲ့သလိုပါပဲ—သူ သန်းခေါင်ယံမှာ ထွက်သွားတာ မဟုတ်ပါဘူး။",
+						"သူဟာ ၁၁:၄၂ မှာ ဘေလ်ရှင်းပြီး ၁၁:၄၅ အတိမှာ တက္ကစီဆရာ ကိုအောင် အပြင်မှာ ရှိမရှိ မေးပြီး ပြေးထွက်သွားခဲ့တာပါ!"
+					]
+				}
+			},
+			{
+				"id": "q_table3",
+				"text": {
+					"en": "Tell me about the customers at Table 3.",
+					"my": "စားပွဲ ၃ က ဧည့်သည် ၃ ဦးအကြောင်း မေးမြန်းမည်"
+				},
+				"dialogue": {
+					"en": [
+						"Saya Min the teacher, Ma Thida the trader, and Ko Aung the taxi driver were sitting there together.",
+						"They were talking loudly about midnight harbor cargo when the stranger sat beside them. If you solve their tea orders, they might share more details!"
+					],
+					"my": [
+						"ကျောင်းဆရာ ဆရာမင်း၊ ဈေးသည် မသီတာနဲ့ တက္ကစီဆရာ ကိုအောင်တို့ စားပွဲ ၃ မှာ အတူထိုင်နေခဲ့ကြတာပါ။",
+						"သူတို့ သန်းခေါင်ယံ ဆိပ်ကမ်းကုန်စည်အကြောင်း ပြောနေတုန်း အဲဒီသူစိမ်း သူတို့ဘေး လာထိုင်တာပဲ။ သူတို့ လက်ဖက်ရည်အော်ဒါလေး ဖြေရှင်းပေးရင် သူတို့ သိတာတွေ ပြောပြကြလိမ့်မယ်ဗျ!"
+					]
+				}
+			},
+			{
+				"id": "q_items",
+				"text": {
+					"en": "Did the stranger leave anything behind?",
+					"my": "သူစိမ်း ကျန်ရစ်ခဲ့တဲ့ ပစ္စည်းများ ရှိပါသလား?"
+				},
+				"dialogue": {
+					"en": [
+						"Yes! He left a worn leather notebook on the stool, and that crinkled receipt was dropped near the counter.",
+						"You should inspect them closely—a sharp detective like you will surely spot clues I overlooked!"
+					],
+					"my": [
+						"ရှိတယ်ဗျာ! ခုံပေါ်မှာ သားရေမှတ်စုစာအုပ်တစ်အုပ် ကျန်ခဲ့ပြီး ကောင်တာအနီးမှာ တွန့်ကျေနေတဲ့ ဘေလ်ဖြတ်ပိုင်းတစ်ခု တွေ့ရတယ်။",
+						"စားပွဲပေါ်မှာ သေချာစစ်ဆေးကြည့်ပါဦး—စုံထောက်ကြီးလို မျက်စိထက်တဲ့သူဆို ကျွန်တော် မမြင်တာတွေ တွေ့နိုင်မှာပါ!"
+					]
+				}
+			}
+		],
+		"evidence_reactions": {
+			"tea_receipt_timestamp": {
+				"is_contradiction": true,
+				"reveals_info": "ko_zaw_true_timeline",
+				"dialogue_first": {
+					"en": [
+						"Wait... this tea shop receipt is stamped 11:42 PM?! (Ko Zaw turns pale and rubs his neck nervously)...",
+						"Alright, Detective... you caught me. I told everyone midnight earlier because I didn't want police scrutinizing our late closing permit.",
+						"The real truth is: he paid at 11:42 PM and dashed into the downpour at 11:45 PM sharp—the exact moment our wall clock jammed!",
+						"Right before sprinting into the dark, he frantically asked if Ko Aung's taxi was still waiting outside on 38th Street!"
+					],
+					"my": [
+						"နေပါဦး... ဒီလက်ဖက်ရည်ဆိုင် ဘေလ်မှာ အချိန်တံဆိပ်က ၁၁:၄၂ ပါလား?! (ကိုဇော် မျက်နှာပျက်သွားပြီး လည်ပင်းကို ပွတ်သပ်ရင်း အကြည့်လွှဲလိုက်သည်)...",
+						"ကောင်းပါပြီ စုံထောက်ကြီးရယ်... ကျွန်တော် ဝန်ခံပါ့မယ်။ ဆိုင်ပိတ်ချိန်နဲ့ ပတ်သက်ပြီး ရဲတွေ စစ်ဆေးမှာစိုးလို့ စောစောက သန်းခေါင်ယံလို့ လိမ်ပြောလိုက်မိတာပါ။",
+						"တကယ်တော့ သူဟာ ၁၁:၄၂ မှာ ဘေလ်ရှင်းပြီး နံရံကပ်နာရီ ရပ်သွားတဲ့ ၁၁:၄၅ အတိမှာ မိုးထဲရေထဲ ပြေးထွက်သွားခဲ့တာပါ!",
+						"မပြေးခင်မှာ သူ ၃၈ လမ်းမပေါ်မှာ ကိုအောင့်တက္ကစီ ရှိမရှိ အလောတကြီး မေးသွားခဲ့ပါသေးတယ်!"
+					]
+				},
+				"dialogue_repeated": {
+					"en": [
+						"I've already told you the honest truth about that receipt, Detective. 11:45 PM sharp, and he asked for Ko Aung's taxi."
+					],
+					"my": [
+						"အဲဒီဘေလ်ဖြတ်ပိုင်းအကြောင်း အမှန်အတိုင်း ကျွန်တော် ဝန်ခံပြီးပါပြီဗျာ။ ၁၁:၄၅ အတိမှာ ကိုအောင့်တက္ကစီကို မေးပြီး ပြေးသွားတာပါ။"
+					]
+				}
+			},
+			"tea_clock_stopped_time": {
+				"dialogue": {
+					"en": [
+						"Yes, our antique teak clock! The hands jammed at 11:45 PM right when the electrical surge flared as the stranger fled."
+					],
+					"my": [
+						"ဟုတ်ပါတယ်ဗျာ၊ အဲဒီရှေးဟောင်းနာရီကြီး! အဲဒီလူ ပြေးထွက်သွားပြီး လျှပ်စစ်မီးတွေ ဝင်းကနဲဖြစ်ချိန် ၁၁:၄၅ မှာ လက်တံတွေ ရပ်သွားခဲ့တာပါ။"
+					]
+				}
+			},
+			"tea_notebook_cipher": {
+				"dialogue": {
+					"en": [
+						"That leather notebook! The stranger dropped it when he bolted. I saw weird cipher symbols inside and decided not to touch it."
+					],
+					"my": [
+						"အဲဒီသားရေစာအုပ်လား! အဲဒီလူ ပြေးတုန်းက ကျန်ခဲ့တာ။ အထဲမှာ ထူးဆန်းတဲ့ လျှို့ဝှက်ကုဒ်တွေ တွေ့လို့ ကျွန်တော် မကိုင်ရဲတာနဲ့ ထားထားတာပါ။"
+					]
+				}
+			},
+			"harbor_cargo_slip": {
+				"dialogue": {
+					"en": [
+						"A cargo slip for Pier 4 with the Royal Hintha Seal?! That must have slipped from his raincoat pocket! He was definitely heading to the docks."
+					],
+					"my": [
+						"ဆိပ်ခံ (၄) အတွက် ဟင်္သာတံဆိပ်ပါ ကုန်လက်မှတ်ကြီးပါလား?! သူ့မိုးကာအင်္ကျီအိတ်ထဲက ကျသွားတာ ဖြစ်မယ်! သူ ဆိပ်ကမ်းဘက်ကို သွားတာ သေချာနေပြီ။"
+					]
+				}
+			},
+			"tea_port_newspaper": {
+				"dialogue": {
+					"en": [
+						"A newspaper article circled in red about the port? Someone left that near the kettle yesterday. Sounds like shady business down on Strand Road."
+					],
+					"my": [
+						"ဆိပ်ကမ်းသတင်းကို အနီရောင်ဝိုင်းထားတဲ့ သတင်းစာလား? မနေ့က ရေနွေးအိုးနားမှာ တစ်ယောက်ယောက် ထားခဲ့တာပါ။ ကမ်းနားလမ်းဘက်မှာ မသင်္ကာစရာတွေ ဖြစ်နေပုံရတယ်။"
+					]
+				}
+			},
+			"default": {
+				"dialogue": {
+					"en": [
+						"Hmm, I haven't seen that before, Detective. Doesn't seem connected to what happened here tonight."
+					],
+					"my": [
+						"ဟင်၊ ဒါမျိုး ကျွန်တော် တစ်ခါမှ မမြင်ဖူးပါဘူး စုံထောက်ကြီး။ ဒီည ဒီမှာဖြစ်ခဲ့တာနဲ့တော့ မဆိုင်ဘူး ထင်တယ်ဗျာ။"
+					]
+				}
+			}
+		}
+	}
+}
+
+static func get_character_questioning_data(char_id: String, lang: String) -> Dictionary:
+	var l = lang if lang == "my" else "en"
+	if CHARACTER_QUESTIONING.has(char_id):
+		var raw = CHARACTER_QUESTIONING[char_id]
+		var data = {}
+		data["id"] = char_id
+		data["speaker"] = raw.get("speaker", {}).get(l, raw.get("speaker", {}).get("en", char_id))
+		
+		# Greetings
+		var g_raw = raw.get("greetings", {})
+		data["greetings"] = {}
+		for g_key in g_raw:
+			data["greetings"][g_key] = g_raw[g_key].get(l, g_raw[g_key].get("en", ""))
+		
+		# Questions
+		data["questions"] = []
+		for q in raw.get("questions", []):
+			var q_item = {
+				"id": q.get("id", ""),
+				"text": q.get("text", {}).get(l, q.get("text", {}).get("en", ""))
+			}
+			if q.has("dialogue"):
+				q_item["dialogue"] = q["dialogue"].get(l, q["dialogue"].get("en", []))
+			if q.has("dialogue_initial"):
+				q_item["dialogue_initial"] = q["dialogue_initial"].get(l, q["dialogue_initial"].get("en", []))
+			if q.has("dialogue_revealed"):
+				q_item["dialogue_revealed"] = q["dialogue_revealed"].get(l, q["dialogue_revealed"].get("en", []))
+			data["questions"].append(q_item)
+		
+		# Evidence reactions
+		data["evidence_reactions"] = {}
+		var ev_raw = raw.get("evidence_reactions", {})
+		for cid in ev_raw:
+			var reaction = ev_raw[cid].duplicate(true)
+			if reaction.has("dialogue"):
+				reaction["dialogue"] = reaction["dialogue"].get(l, reaction["dialogue"].get("en", []))
+			if reaction.has("dialogue_first"):
+				reaction["dialogue_first"] = reaction["dialogue_first"].get(l, reaction["dialogue_first"].get("en", []))
+			if reaction.has("dialogue_repeated"):
+				reaction["dialogue_repeated"] = reaction["dialogue_repeated"].get(l, reaction["dialogue_repeated"].get("en", []))
+			data["evidence_reactions"][cid] = reaction
+		
+		return data
+	return {}
+
