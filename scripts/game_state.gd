@@ -7,12 +7,19 @@ const Localization = preload("res://scripts/localization.gd")
 signal language_changed(lang: String)
 signal clue_added(clue_id: String, clue_description: String)
 signal clue_discovered(clue: Dictionary)
+signal deduction_unlocked(deduction_id: String, deduction_data: Dictionary)
 signal puzzle_solved(puzzle_id: String)
+signal question_asked(character_id: String, question_id: String)
+signal information_revealed(info_key: String)
+signal evidence_presented(character_id: String, clue_id: String, is_contradiction: bool)
 
 var current_language: String = "my" # Defaults to Myanmar as requested
 var current_location_id: String = "downtown"
 var discovered_clues: Array[Dictionary] = []
+var unlocked_deductions: Array[String] = []
 var completed_puzzles: Dictionary = {}
+var asked_dialogue_questions: Dictionary = {}
+var revealed_dialogue_info: Dictionary = {}
 
 const LOCATIONS: Dictionary = {
 	"downtown": {
@@ -113,6 +120,7 @@ func get_localized_clue(clue: Dictionary) -> Dictionary:
 		"title": clue_loc.get("title", clue.get("default_title", "")),
 		"description": clue_loc.get("description", clue.get("default_desc", "")),
 		"location": clue_loc.get("location", clue.get("default_loc", "")),
+		"icon": clue_loc.get("icon", "🔍"),
 		"timestamp": clue.get("timestamp", "11:45 PM")
 	}
 
@@ -121,6 +129,77 @@ func get_clue_count() -> int:
 
 func clear_clues() -> void:
 	discovered_clues.clear()
+
+## Deduction Management System (Synthesis of evidence)
+func unlock_deduction(id: String) -> bool:
+	if id.is_empty() or has_deduction(id):
+		return false
+	unlocked_deductions.append(id)
+	var data: Dictionary = Localization.get_deduction_data(id, current_language)
+	deduction_unlocked.emit(id, data)
+	return true
+
+func has_deduction(id: String) -> bool:
+	return unlocked_deductions.has(id)
+
+func get_deductions() -> Array[Dictionary]:
+	var result: Array[Dictionary] = []
+	for did in unlocked_deductions:
+		result.append(Localization.get_deduction_data(did, current_language))
+	return result
+
+func get_deduction_count() -> int:
+	return unlocked_deductions.size()
+
+func clear_deductions() -> void:
+	unlocked_deductions.clear()
+
+## Evaluates whether connecting two clue IDs forms a valid deduction
+func evaluate_clue_connection(clue_id_1: String, clue_id_2: String) -> Dictionary:
+	if clue_id_1.is_empty() or clue_id_2.is_empty() or clue_id_1 == clue_id_2:
+		return {
+			"status": "INVALID",
+			"message": Localization.get_ui_text("NOTEBOOK_FEEDBACK_SELECT_TWO", current_language),
+			"deduction": {}
+		}
+	
+	var lang: String = current_language
+	var matched_deduction_id: String = ""
+	
+	for did in Localization.DEDUCTIONS:
+		var d_info = Localization.DEDUCTIONS[did]
+		var req_clues: Array = d_info.get("clues", [])
+		if req_clues.size() == 2:
+			if (req_clues[0] == clue_id_1 and req_clues[1] == clue_id_2) or \
+			   (req_clues[0] == clue_id_2 and req_clues[1] == clue_id_1):
+				matched_deduction_id = did
+				break
+	
+	if matched_deduction_id.is_empty():
+		return {
+			"status": "NO_CONNECTION",
+			"message": Localization.get_ui_text("NOTEBOOK_FEEDBACK_NO_MATCH", lang),
+			"deduction": {}
+		}
+	
+	var ded_data = Localization.get_deduction_data(matched_deduction_id, lang)
+	var ded_title = ded_data.get("title", matched_deduction_id)
+	
+	if has_deduction(matched_deduction_id):
+		var fmt_already = Localization.get_ui_text("NOTEBOOK_FEEDBACK_ALREADY", lang)
+		return {
+			"status": "ALREADY_UNLOCKED",
+			"message": fmt_already % ded_title,
+			"deduction": ded_data
+		}
+	
+	unlock_deduction(matched_deduction_id)
+	var fmt_succ = Localization.get_ui_text("NOTEBOOK_FEEDBACK_SUCCESS", lang)
+	return {
+		"status": "SUCCESS",
+		"message": fmt_succ % ded_title,
+		"deduction": ded_data
+	}
 
 ## Puzzle Progression System (Persistent across scene changes)
 func mark_puzzle_solved(puzzle_id: String) -> void:
@@ -144,7 +223,36 @@ func is_game_completed() -> bool:
 func clear_puzzles() -> void:
 	completed_puzzles.clear()
 
+## Character Questioning & Interrogation Tracking
+func record_question_asked(char_id: String, question_id: String) -> void:
+	if not asked_dialogue_questions.has(char_id):
+		asked_dialogue_questions[char_id] = {}
+	asked_dialogue_questions[char_id][question_id] = true
+	question_asked.emit(char_id, question_id)
+
+func is_question_asked(char_id: String, question_id: String) -> bool:
+	if asked_dialogue_questions.has(char_id):
+		return asked_dialogue_questions[char_id].get(question_id, false)
+	return false
+
+func record_info_revealed(info_key: String) -> void:
+	if not info_key.is_empty():
+		revealed_dialogue_info[info_key] = true
+		information_revealed.emit(info_key)
+
+func is_info_revealed(info_key: String) -> bool:
+	return revealed_dialogue_info.get(info_key, false)
+
+func record_evidence_presented(char_id: String, clue_id: String, is_contradiction: bool) -> void:
+	evidence_presented.emit(char_id, clue_id, is_contradiction)
+
+func clear_questioning_state() -> void:
+	asked_dialogue_questions.clear()
+	revealed_dialogue_info.clear()
+
 func reset_game() -> void:
 	clear_clues()
 	clear_puzzles()
+	clear_deductions()
+	clear_questioning_state()
 	current_location_id = "downtown"

@@ -1,0 +1,310 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/inspection_panel.gd" id="1_inspect_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
+bg_color = Color(0.054902, 0.0705882, 0.113725, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.882353, 0.72549, 0.321569, 0.9)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 16
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
+bg_color = Color(0.0980392, 0.12549, 0.196078, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.92, 0.78, 0.35, 0.95)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frame"]
+bg_color = Color(0.0352941, 0.0470588, 0.0784314, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.882353, 0.72549, 0.321569, 0.75)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clue_badge"]
+bg_color = Color(0.18, 0.14, 0.05, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.988235, 0.854902, 0.419608, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.109804, 0.137255, 0.219608, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.882353, 0.72549, 0.321569, 0.75)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.882353, 0.72549, 0.321569, 0.25)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.988235, 0.854902, 0.419608, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.882353, 0.72549, 0.321569, 0.45)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.988235, 0.854902, 0.419608, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="InspectionPanel" type="Control"]
+visible = false
+z_index = 20
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_inspect_script")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0235294, 0.0431373, 0.72)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainDialog" type="PanelContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(980, 540)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dialog")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/MainDialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/MainDialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TopBar" type="HBoxContainer" parent="CenterContainer/MainDialog/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TitleBadge" type="PanelContainer" parent="CenterContainer/MainDialog/Margin/VBox/TopBar"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_badge")
+
+[node name="BadgeMargin" type="MarginContainer" parent="CenterContainer/MainDialog/Margin/VBox/TopBar/TitleBadge"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 4
+
+[node name="ObjectTitleLabel" type="Label" parent="CenterContainer/MainDialog/Margin/VBox/TopBar/TitleBadge/BadgeMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.854902, 0.419608, 1)
+theme_override_font_sizes/font_size = 18
+text = "✦ Object Name"
+
+[node name="ObjectSubtitleLabel" type="Label" parent="CenterContainer/MainDialog/Margin/VBox/TopBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.68, 0.74, 0.84, 1)
+theme_override_font_sizes/font_size = 14
+text = "Location Detail Hint"
+
+[node name="Spacer" type="Control" parent="CenterContainer/MainDialog/Margin/VBox/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="CenterContainer/MainDialog/Margin/VBox/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 36)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.988235, 0.854902, 0.419608, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "✕ Close"
+
+[node name="ContentHBox" type="HBoxContainer" parent="CenterContainer/MainDialog/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="ImageFrame" type="PanelContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox"]
+custom_minimum_size = Vector2(516, 388)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_frame")
+
+[node name="TextureMargin" type="MarginContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/ImageFrame"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ObjectTexture" type="TextureRect" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/ImageFrame/TextureMargin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 384)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HotspotsContainer" type="Control" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/ImageFrame/TextureMargin"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(512, 384)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="DetailSidePanel" type="PanelContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_frame")
+
+[node name="SideMargin" type="MarginContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SideVBox" type="VBoxContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ObservationTitleLabel" type="Label" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.854902, 0.419608, 1)
+theme_override_font_sizes/font_size = 17
+text = "✦ Detail Observation"
+
+[node name="Scroll" type="ScrollContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ObservationLabel" type="Label" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.94, 0.95, 0.98, 1)
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 15
+text = "Click a highlighted area on the object to examine details."
+autowrap_mode = 3
+
+[node name="ClueNoticeBadge" type="PanelContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_clue_badge")
+
+[node name="ClueMargin" type="MarginContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox/ClueNoticeBadge"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="ClueNoticeLabel" type="Label" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox/ClueNoticeBadge/ClueMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.854902, 0.419608, 1)
+theme_override_font_sizes/font_size = 14
+text = "📓 New Clue Recorded!"
+autowrap_mode = 3
+
+[node name="ActionFooter" type="HBoxContainer" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NotebookButton" type="Button" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox/ActionFooter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.854902, 0.419608, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "📓 Notebook (0)"
+
+[node name="Spacer" type="Control" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox/ActionFooter"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ReturnButton" type="Button" parent="CenterContainer/MainDialog/Margin/VBox/ContentHBox/DetailSidePanel/SideMargin/SideVBox/ActionFooter"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.854902, 0.419608, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+text = "← Back"
+
+[node name="FooterHintLabel" type="Label" parent="CenterContainer/MainDialog/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.60, 0.70, 1)
+theme_override_font_sizes/font_size = 13
+text = "Tap or click highlighted areas on the object to investigate details."

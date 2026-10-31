@@ -1,9 +1,105 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/notebook_panel.gd" id="1_notebook_script"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.0470588, 0.0627451, 0.101961, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.882353, 0.72549, 0.321569, 0.9)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 20
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_active"]
+bg_color = Color(0.18, 0.14, 0.06, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.988235, 0.827451, 0.301961, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_inactive"]
+bg_color = Color(0.08, 0.1, 0.16, 0.7)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.42, 0.55, 0.5)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_workbench"]
+bg_color = Color(0.0666667, 0.0823529, 0.129412, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.882353, 0.72549, 0.321569, 0.75)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slot"]
+bg_color = Color(0.0980392, 0.121569, 0.188235, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.58, 0.72, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_deduce"]
+bg_color = Color(0.882353, 0.72549, 0.321569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.92, 0.6, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_close"]
+bg_color = Color(0.12, 0.15, 0.22, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.882353, 0.72549, 0.321569, 0.8)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_clear"]
+bg_color = Color(0.15, 0.18, 0.25, 0.7)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.52, 0.65, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="NotebookPanel" type="Control"]
 visible = false
+z_index = 50
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +116,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0196078, 0.0313726, 0.0588235, 0.7)
+color = Color(0.0196078, 0.0313726, 0.0588235, 0.78)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -32,23 +128,24 @@ grow_vertical = 2
 
 [node name="NotebookCard" type="PanelContainer" parent="CenterContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(720, 520)
+custom_minimum_size = Vector2(780, 560)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/NotebookCard"]
 layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 18
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 10
 
 [node name="Header" type="HBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 12
 
 [node name="Titles" type="VBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/Header"]
 layout_mode = 2
@@ -59,45 +156,209 @@ theme_override_constants/separation = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
-theme_override_font_sizes/font_size = 22
-text = "📓 INVESTIGATOR'S NOTEBOOK"
+theme_override_font_sizes/font_size = 20
+text = "📓 INVESTIGATION BOARD"
 
 [node name="SubtitleLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/Header/Titles"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.490196, 0.784314, 0.980392, 1)
-theme_override_font_sizes/font_size = 13
-text = "Recorded Clues & Mystery Notes in Yangon"
+theme_override_font_sizes/font_size = 12
+text = "Connect Clues, Analyze Evidence & Synthesize Deductions"
 
 [node name="TopCloseButton" type="Button" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/Header"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(90, 36)
+custom_minimum_size = Vector2(86, 34)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 14
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_close")
+theme_override_font_sizes/font_size = 13
 text = "✕ Close"
 
-[node name="CluesScroll" type="ScrollContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer"]
+[node name="TabBar" type="HBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 340)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CluesTabButton" type="Button" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/TabBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 38)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.92, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_active")
+text = "🔍 Evidence & Clues (0)"
+
+[node name="DeductionsTabButton" type="Button" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/TabBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 38)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.72, 0.76, 0.84, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_tab_inactive")
+text = "💡 Deductions (0)"
+
+[node name="ContentContainer" type="PanelContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CluesList" type="VBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/CluesScroll"]
+[node name="CluesView" type="VBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="CluesScroll" type="ScrollContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 225)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CluesList" type="VBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/CluesScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="EmptyStateLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/CluesScroll/CluesList"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65098, 0.701961, 0.780392, 1)
+theme_override_font_sizes/font_size = 14
+text = "No clues recorded yet.
+
+Explore districts, inspect objects, and speak with local residents to discover clues."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorkbenchPanel" type="PanelContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_workbench")
+
+[node name="WorkbenchMargin" type="MarginContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="WorkbenchVBox" type="VBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WorkbenchTop" type="HBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox"]
+layout_mode = 2
+
+[node name="WorkbenchTitleLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox/WorkbenchTop"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 13
+text = "🔗 Evidence Synthesis Workbench"
+
+[node name="WorkbenchHintLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox/WorkbenchTop"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.6, 0.68, 0.8, 1)
+theme_override_font_sizes/font_size = 12
+text = "— Click any 2 clues above to test connection"
+
+[node name="ClearButton" type="Button" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox/WorkbenchTop"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 26)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_clear")
+text = "↺ Clear"
+
+[node name="SlotsHBox" type="HBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Slot1Button" type="Button" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox/SlotsHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_slot")
+text = "+ Select Clue 1"
+clip_text = true
+
+[node name="PlusLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox/SlotsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 16
+text = "🔗"
+
+[node name="Slot2Button" type="Button" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox/SlotsHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_slot")
+text = "+ Select Clue 2"
+clip_text = true
+
+[node name="DeduceButton" type="Button" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox/SlotsHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(170, 42)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_colors/font_focus_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_colors/font_hover_color = Color(0.05, 0.05, 0.05, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_deduce")
+text = "⚡ Connect Clues"
+
+[node name="FeedbackLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/CluesView/WorkbenchPanel/WorkbenchMargin/WorkbenchVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.88, 1)
+theme_override_font_sizes/font_size = 12
+text = "Select any 2 clues above to attempt a deduction."
+autowrap_mode = 2
+
+[node name="DeductionsView" type="VBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="DeductionsScroll" type="ScrollContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/DeductionsView"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 330)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DeductionsList" type="VBoxContainer" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/DeductionsView/DeductionsScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="EmptyStateLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/CluesScroll/CluesList"]
+[node name="DeductionsEmptyStateLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/ContentContainer/DeductionsView/DeductionsScroll/DeductionsList"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 180)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.65098, 0.701961, 0.780392, 1)
-theme_override_font_sizes/font_size = 15
-text = "No clues recorded yet.
+theme_override_font_sizes/font_size = 14
+text = "No deductions formed yet.
 
-Explore districts, inspect objects, and speak with local residents to discover clues."
+In the Evidence tab, select and connect two related clues to uncover new deductions!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -109,8 +370,15 @@ theme_override_constants/separation = 14
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.741176, 0.776471, 0.823529, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "Recorded Clues: 0"
+
+[node name="DeductionCountLabel" type="Label" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.988235, 0.827451, 0.301961, 1)
+theme_override_font_sizes/font_size = 13
+text = "Case Deductions: 0"
 
 [node name="Spacer" type="Control" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/Footer"]
 layout_mode = 2
@@ -118,7 +386,9 @@ size_flags_horizontal = 3
 
 [node name="CloseButton" type="Button" parent="CenterContainer/NotebookCard/MarginContainer/VBoxContainer/Footer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(170, 42)
+custom_minimum_size = Vector2(160, 38)
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_close")
 text = "Close Notebook ✕"

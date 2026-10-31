@@ -19,6 +19,12 @@ signal interacted(hotspot: Button)
 @export var clue_title: String = ""
 @export_multiline var clue_description: String = ""
 
+@export_group("Inspection System")
+@export var inspection_target_id: String = ""
+
+@export_group("Questioning / Interrogation")
+@export var character_id: String = ""
+
 func _ready() -> void:
 	add_to_group("interactable_hotspots")
 	pressed.connect(_on_pressed)
